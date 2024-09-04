@@ -12,7 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             let token = crypto.randomBytes(32).toString('hex');
             const expiresAt =  addMinutes(new Date(), 20);
 
-            const verificationUrl = `${process.env.NEXT_PUBLIC_URL_FRONTEND}/verified-change-password?token=${token}&email=${email}`
+            const verificationUrl = `/verified-change-password?token=${token}&email=${email}`
 
             token = await hashContent(token)
 

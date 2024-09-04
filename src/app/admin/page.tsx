@@ -14,7 +14,7 @@ export default function Page() {
 
   const { data, isLoading } = useQuery<Product[]>({
     queryKey: ["products"],
-    queryFn: () => fetch(`${process.env.NEXT_PUBLIC_URL}/products/get-products`).then((res) => res.json()),
+    queryFn: () => fetch(`/api/products/get-products`).then((res) => res.json()),
   })
 
   useEffect(() => {

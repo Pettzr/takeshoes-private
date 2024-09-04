@@ -1,0 +1,740 @@
+[
+    {
+        "name": "Produto 1",
+        "slug": "produto-1",
+        "variant": {
+            "color": "Preto",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472947/takeshoes_images/shopping_28_e8mkqv.webp",
+            "price": "99",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }
+    },
+    {
+        "name": "Produto 2",
+        "slug": "produto-2",
+        "variant": {
+            "color": "Amarelo",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472947/takeshoes_images/shopping_29_dbmehd.webp",
+            "price": "99",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }
+       
+    },
+    {
+        "name": "Produto 3",
+        "slug": "produto-3",
+        "variant" : {
+            "color": "Preto",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472836/takeshoes_images/shopping_lqjpqf.webp",
+            "price": "99",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }
+    },
+    {
+        "name": "Produto 4",
+        "slug": "produto-4",
+        "variant": {
+            "color": "Creme",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472835/takeshoes_images/shopping_26_njpklv.webp",
+            "price": "99",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }
+      
+    },
+    {
+        "name": "Produto 5",
+        "slug": "produto-5",
+        "variant": {
+            "color": "Branco",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472834/takeshoes_images/shopping_25_zakyr3.webp",
+            "price": "99",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }
+    },
+    {
+        "name": "Produto 6",
+        "slug": "produto-6",
+        "variant": {
+            "color": "Marrom",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472834/takeshoes_images/shopping_24_zunrmj.webp",
+            "price": "99",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }  
+    },
+    {
+        "name": "Produto 7",
+        "slug": "produto-7",
+        "variant": {
+            "color": "Preto",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472834/takeshoes_images/shopping_23_dafmks.webp",
+            "price": "99",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }
+    },
+    {
+        "name": "Produto 8",
+        "slug": "produto-8",
+        "variant": {
+            "color": "Preto",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472834/takeshoes_images/shopping_22_jcsnp1.webp",
+            "price": "99",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }
+    },
+    {
+        "name": "Produto 9",
+        "slug": "produto-9",
+        "variant": {
+            "color": "Preto",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472831/takeshoes_images/shopping_21_deqmjr.webp",
+            "price": "70",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }   
+    },
+    {
+        "name": "Produto 10",
+        "slug": "produto-10",
+        "variant": {
+            "color": "Marrom",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472831/takeshoes_images/shopping_20_vx6kzr.webp",
+            "price": "70",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        } 
+    },
+    {
+        "name": "Produto 11",
+        "slug": "produto-11",
+        "variant": {
+            "color": "Preto",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472831/takeshoes_images/shopping_18_ggpb0l.webp",
+            "price": "70",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }
+    },
+    {
+        "name": "Produto 12",
+        "slug": "produto-12",
+        "variant": {
+            "color": "Verde Fluorescente",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472829/takeshoes_images/shopping_15_mmpciw.webp",
+            "price": "70",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }
+    },
+    {
+        "name": "Produto 13",
+        "slug": "produto-13",
+        "variant": {
+            "color": "Bege",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472831/takeshoes_images/shopping_19_rkjaer.webp",
+            "price": "70",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }
+    },
+    {
+        "name": "Produto 14",
+        "slug": "produto-14",
+        "variant": {
+            "color": "Azul Claro",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472830/takeshoes_images/shopping_17_iv8al1.webp",
+            "price": "120",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }
+    },
+    {
+        "name": "Produto 15",
+        "slug": "produto-15",
+        "variant": {
+            "color": "Salmão",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v17254728120/takeshoes_images/shopping_16_mjsujd.webp",
+            "price": "120",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        } 
+    },
+    {
+        "name": "Produto 16",
+        "slug": "produto-16",
+        "variant": {
+            "color": "Laranja",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472828/takeshoes_images/shopping_14_fusija.webp",
+            "price": "120",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        } 
+    },
+    {
+        "name": "Produto 17",
+        "slug": "produto-17",
+        "variant": {
+            "color": "Preto",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472828/takeshoes_images/shopping_13_vvn8pe.webp",
+            "price": "120",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }      
+    },
+    {
+        "name": "Produto 18",
+        "slug": "produto-18",
+        "variant": {
+            "color": "Vermelho",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472827/takeshoes_images/shopping_12_dtrxpe.webp",
+            "price": "120",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }
+    },
+    {
+        "name": "Produto 19",
+        "slug": "produto-19",
+        "variant": {
+            "color": "Branco",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472827/takeshoes_images/shopping_11_p139b6.webp",
+            "price": "120",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }
+    },
+    {
+        "name": "Produto 20",
+        "slug": "produto-20",
+        "variant": {
+            "color": "Preto",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472826/takeshoes_images/shopping_10_ekrg2h.webp",
+            "price": "50",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }   
+    },
+    {
+        "name": "Produto 21",
+        "slug": "produto-21",
+        "variant": {
+            "color": "Bege",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472826/takeshoes_images/shopping_9_mlow3e.webp",
+            "price": "50",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }   
+    },
+    {
+        "name": "Produto 22",
+        "slug": "produto-22",
+        "variant": {
+            "color": "Preto",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472826/takeshoes_images/shopping_8_yufchs.webp",
+            "price": "50",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }
+    },
+    {
+        "name": "Produto 23",
+        "slug": "produto-23",
+        "variant": {
+            "color": "Preto",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472825/takeshoes_images/shopping_7_efa3mj.webp",
+            "price": "50",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }
+    },
+    {
+        "name": "Produto 24",
+        "slug": "produto-24",
+        "variant": {
+            "color": "Marrom Claro",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472824/takeshoes_images/shopping_4_spf8tt.webp",
+            "price": "50",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }
+    },
+    {
+        "name": "Produto 25",
+        "slug": "produto-25",
+        "variant": {
+            "color": "Verde Musgo",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472824/takeshoes_images/shopping_6_lqso6a.webp",
+            "price": "50",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }
+    },
+    {
+        "name": "Produto 26",
+        "slug": "produto-26",
+        "variant": {
+            "color": "Marrom Escuro",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472824/takeshoes_images/shopping_5_tza9if.webp",
+            "price": "30",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }
+    },
+    {
+        "name": "Produto 27",
+        "slug": "produto-27",
+        "variant": {
+            "color": "Rosa",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472823/takeshoes_images/shopping_1_xvppmt.webp",
+            "price": "30",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }
+    },
+    {
+        "name": "Produto 28",
+        "slug": "produto-28",
+        "variant": {
+            "color": "Branco",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472823/takeshoes_images/shopping_3_sfk53f.webp",
+            "price": "30",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }
+    },
+    {
+        "name": "Produto 29",
+        "slug": "produto-29",
+        "variant": {
+            "color": "Cinza",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472823/takeshoes_images/shoes-1433925_1280_etfxkh.jpg",
+            "price": "30",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }
+    },
+    {
+        "name": "Produto 30",
+        "slug": "produto-30",
+        "variant": {
+            "color": "Preto",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472822/takeshoes_images/shopping_27_kk7thh.webp",
+            "price": "30",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }
+    },
+    {
+        "name": "Produto 31",
+        "slug": "produto-31",
+        "variant": {
+            "color": "Cinza",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472823/takeshoes_images/shopping_2_vheqpd.webp",
+            "price": "99",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }
+    },
+    {
+        "name": "Produto 32",
+        "slug": "produto-32",
+        "variant": {
+            "color": "Marrom Claro",
+            "images":"https://res.cloudinary.com/dgzosykzw/image/upload/v1725472823/takeshoes_images/shoes-584850_1280_qe2gsn.jpg",
+            "price": "99",
+            "sizes": [
+                {
+                    "size": "38",
+                    "quantity": "4"
+                },
+                {
+                    "size": "40",
+                    "quantity": "10"
+                },
+                {
+                    "size": "42",
+                    "quantity": "6"
+                }
+            ]
+        }
+    }
+]

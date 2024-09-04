@@ -19,7 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 return res.status(400).json({ message: 'Requisitos de Senha não preenchidos' });
             }    
                   
-            const verificationUrl = `${process.env.NEXT_PUBLIC_URL_FRONTEND}/create-user-verified?token=${token}&email=${email}`
+            const verificationUrl = `/create-user-verified?token=${token}&email=${email}`
 
             password = await hashContent(password)
             token = await hashContent(token)
