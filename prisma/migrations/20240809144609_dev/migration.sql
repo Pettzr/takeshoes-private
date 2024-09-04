@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Size" ALTER COLUMN "quantity" SET DEFAULT 0,
+ALTER COLUMN "variantId" SET DEFAULT 0;

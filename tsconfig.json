@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"],
+      "@/components/*": ["./src/ui/components/*"],
+      "@/admin-components/*": ["./src/ui/admin/*"],
+      "@/app/lib/*": ["./src/lib/*"],
+      "@types": ["./src/types/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/lib/actions", "src/pages/api/products/variants", "prisma/**/*.ts", "src/ui/components/Skeletons/marketing-carousel-skeleton", "src/ui/components/ImageManager"],
+  "exclude": ["node_modules"]
+}
