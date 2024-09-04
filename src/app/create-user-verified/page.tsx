@@ -2,10 +2,10 @@
 
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 
 
-export default function Page() {
+function CreateUserVerified() {
     const searchParams = useSearchParams();
     const session = useSession();
     const router = useRouter();
@@ -63,3 +63,11 @@ export default function Page() {
         )
     )
 }
+
+export default function Page() {
+    return (
+      <Suspense fallback={<div>Loading...</div>}>
+        <CreateUserVerified />
+      </Suspense>
+    );
+  }

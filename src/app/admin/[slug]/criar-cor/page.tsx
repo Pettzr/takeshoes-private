@@ -15,7 +15,7 @@ export default function CreateColorPage() {
     if (slug) {
       fetchProductBySlug(slug);
     }
-  }, [slug]);
+  }, [slug, fetchProductBySlug]);
 
   const mutation = useMutation({
     mutationFn: async (colorData: any) => {

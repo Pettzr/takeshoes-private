@@ -2,10 +2,10 @@
 
 import Form from "@/src/ui/components/Form";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 
-export default function Page() {
+function VerifiedChangePassoword () {
     const searchParams = useSearchParams();
     const router = useRouter();
     const token =  searchParams?.get("token");
@@ -44,7 +44,7 @@ export default function Page() {
         };
 
         register();
-    }, [ router, token]);
+    }, [ router, token, email]);
 
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -96,3 +96,11 @@ export default function Page() {
         </div>
     )
 }
+
+export default function Page() {
+    return (
+      <Suspense fallback={<div>Loading...</div>}>
+        <VerifiedChangePassoword />
+      </Suspense>
+    );
+  }

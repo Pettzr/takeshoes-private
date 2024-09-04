@@ -16,7 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const product = await prisma.product.findUnique({
         where: { slug },
         include: {
-          variants: true,
+          variant: true,
         },
       });
 
@@ -25,7 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       }
 
       // Encontra a variante específica
-      const variant = product.variants.find(v => v.id === variantId);
+      const variant = product.variant.find(v => v.id === variantId);
 
       if (!variant) {
         return res.status(404).json({ error: 'Variant not found' });

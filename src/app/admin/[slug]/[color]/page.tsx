@@ -14,7 +14,7 @@ export default function ProductColorPage() {
     if (slug) {
       fetchProductBySlug(slug);
     }
-  }, [slug]);
+  }, [slug, fetchProductBySlug]);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading product data</div>;

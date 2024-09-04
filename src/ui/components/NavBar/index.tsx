@@ -24,8 +24,8 @@ export default function NavBar() {
         <div className="flex bg-black w-full items-center">
             <ul className="flex w-full justify-center text-white text-center ">
                 {icons.map((IconComponent, index) => (
-                    <Link href={links[index]}>
-                        <li key={index} className={clsx(
+                    <Link key={index} href={links[index]}>
+                        <li className={clsx(
                             'flex cursor-pointer h-[40px] w-[200px] justify-center hover:bg-blue-500 items-center gap-4',
                             links[index] === pathname? "bg-blue-700 text-white" : "",
                         )}>
