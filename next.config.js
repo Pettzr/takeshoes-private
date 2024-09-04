@@ -1,11 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: false, // Disable React Strict Mode
-    experimental: { outputFileTracingIncludes: { "/": ["./node_modules/argon2/prebuilds/linux-x64/*.musl.*"], }, },
-    images: {
-      domains: ['res.cloudinary.com', 'images.pexels.com'], // Configure allowed image domains
+  reactStrictMode: false, 
+  experimental: {
+    outputFileTracingIncludes: {
+      "/": ["./node_modules/argon2/prebuilds/linux-x64/*"], 
     },
-  };
-  
-  module.exports = nextConfig; // Export the configuration
-  
+  },
+  images: {
+    domains: ['res.cloudinary.com', 'images.pexels.com'],
+  },
+};
+
+module.exports = nextConfig;
