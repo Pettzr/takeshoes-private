@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "prisma generate && next build",
     "start": "next start",
+    "postinstall": "npm rebuild argon2",
     "lint": "next lint"
   },
   "dependencies": {
