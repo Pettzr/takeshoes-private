@@ -109,7 +109,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
           className="p-2 w-[300px] border-2 border-black/40"
           type="number"
           value={productPrice}
-          onChange={(e: any) => setProductPrice(parseFloat(parseFloat(e.target.value).toFixed(2)))}
+          onChange={(e: any) => setProductPrice(parseFloat(parseFloat(e.target.value).toFixed(2).replace('.', ',')))}
         />
         
         <Cloudinary onUploadSuccess={handleImageUpload} />

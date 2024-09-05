@@ -69,7 +69,7 @@ export default function Products({ products, onPageChange, totalProducts, itemsP
                       height={0}
                       className="w-full h-[400px]"
                     />
-                    {!changeQuantity ? <h1 className="w-full text-black text-center text-2xl font-bold mt-[20px]">R${product.variant[0].price.toFixed(2)}</h1>
+                    {!changeQuantity ? <h1 className="w-full text-black text-center text-2xl font-bold mt-[20px]">R${product.variant[0].price.toFixed(2).replace('.', ',')}</h1>
                     : null}
                   </Link>
                   {changeQuantity ? (
@@ -89,7 +89,7 @@ export default function Products({ products, onPageChange, totalProducts, itemsP
                           ))}
                         </select>
                       </div>
-                      <h1 className='text-black'>Preço: R${(product.variant.price * product.quantity).toFixed(2)}</h1>
+                      <h1 className='text-black'>Preço: R${(product.variant.price * product.quantity).toFixed(2).replace('.', ',')}</h1>
                       <button onClick={() => deleteItem(product.id)} className='border-y border-black w-full'>Tirar do carrinho</button>
                     </div>
                   ) : null}

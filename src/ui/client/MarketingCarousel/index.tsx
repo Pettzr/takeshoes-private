@@ -1,7 +1,7 @@
 'use client';
 
 import { NextPage } from 'next';
-import SlickCarousel from '../components/SlickCarousel';
+import SlickCarousel from '@/src/ui/components/SlickCarousel';
 import { useEffect, useState } from 'react';
 
 const MarketingCarousel: NextPage = () => {

@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useRef, useState } from 'react';
-import MarketingCarousel from '../ui/client/marketing-carousel';
-import News from '../ui/client/news';
+import MarketingCarousel from '@/src/ui/client/MarketingCarousel';
+import News from '@/src/ui/client/News';
 import SearchBar from '../ui/components/SearchBar';
 import Products from '../ui/components/Products';
 import { HomeSkeleton } from '../ui/components/Skeletons';
