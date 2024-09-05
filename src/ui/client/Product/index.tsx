@@ -62,8 +62,8 @@ export default function Product({ data }: any) {
 
     return (
         <div className="w-[1000px] h-[700px] mt-[200px] border-2 border-white">
-            <h1 className="text-white w-full text-center">{data.name}</h1>
-            <div className="relative left-48">
+            <h1 className=" w-full text-center">{data.name}</h1>
+            <div className="relative left-48 ">
                 <SelectVariant
                     variants={data.variant}
                     handleSelect={handleSelect}

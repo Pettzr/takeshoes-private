@@ -76,7 +76,7 @@ export default function SelectedSizes({ selectedColor, variant = [], handleSizeS
                 <div>
                 { selectedSize && (
                 <div>
-                    <h4 className="text-white">Quantidade:</h4>
+                    <h4 className="">Quantidade:</h4>
                     <select onChange={handleQuantityChange} value={quantityValue}>
                         <option value={0}>0</option>
                         {[...Array(availableQuantity)].map((_, index) => (
@@ -93,9 +93,9 @@ export default function SelectedSizes({ selectedColor, variant = [], handleSizeS
             </div>
             <div>
                 {selectedPrice !== null ? (
-                    <h1 className="text-white">Preço: R$ {selectedPrice * quantityValue}</h1>
+                    <h1 className="">Preço: R$ {selectedPrice * quantityValue}</h1>
                 ) : (
-                    <h1 className="text-white">Selecione um tamanho para ver o preço</h1>
+                    <h1 className="">Selecione um tamanho para ver o preço</h1>
                 )}
             </div>
         </div>

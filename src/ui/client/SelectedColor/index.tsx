@@ -48,10 +48,11 @@ export default function SelectedColor({ variant = [], selectedColor }: ImageVari
   return (
     <>
       {selectedVariant && (
-        <div>
+        <div className="">
           <div className="flex p-4 gap-2 justify-center">
             <div className="relative w-[500px] h-[500px]">
               <Image
+                className="border-[1px] border-black"
                 src={selectedImage || selectedVariant.images[0]}
                 layout="fill"
                 alt={`Frente da camisa ${selectedVariant.color}`}

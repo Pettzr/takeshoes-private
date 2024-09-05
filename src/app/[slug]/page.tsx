@@ -18,7 +18,7 @@ export default function Page({ params }: { params: { slug: string} }) {
 
     return(
         <div className="flex w-full flex-col items-center min-h-screen mb-[300px]">
-                <h1 className="text-center text-white text-2xl font-bold">Olá, seja bem-vindo!</h1>
+                <h1 className="text-center text-2xl font-bold">Olá, seja bem-vindo!</h1>
                 <div className="flex w-full justify-center">
                     <Product data={data} />
                 </div>

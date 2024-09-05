@@ -100,3 +100,8 @@ export function AdminSkeleton () {
         </div>
     )
 }
+
+export function ProductSkeleton () {
+    <div className="w-[1000px] h-[700px] mt-[200px] border-2 border-white">
+    </div>
+}
