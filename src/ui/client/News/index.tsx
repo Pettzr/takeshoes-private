@@ -46,7 +46,7 @@ export default function News() {
                 <div className='flex overflow-x-auto gap-8 bg-black/5'>
                     {images.map((item, index) => (
                         <div key={index}>
-                            <Link href={`/explorar/${item.slug}`} className='flex flex-col overflow-y-hidden items-center justify-center'>
+                            <Link href={`/${item.slug}`} className='flex flex-col overflow-y-hidden items-center justify-center'>
                                 <h2 className='text-black text-center text-xl font-bold'>{item.name}</h2>
                                 <Image
                                  src={item.image[0]} 

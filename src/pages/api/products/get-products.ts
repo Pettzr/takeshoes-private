@@ -4,7 +4,19 @@ import prisma from '@/src/lib/prisma';
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {
     try {
+      const { orderBy } = req.query;
+      let orderClause = {};
+    
+      if (orderBy === 'price_asc') {
+        orderClause = { price: 'asc' };
+      } else if (orderBy === 'price_desc') {
+        orderClause = { price: 'desc' };
+      } else if (orderBy === 'created_at_desc') {
+        orderClause = { createdAt: 'desc' };
+      }
+    
       const products = await prisma.product.findMany({
+        orderBy: orderClause,
         include: {
           variant: {
             select: {

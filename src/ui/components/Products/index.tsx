@@ -1,6 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 type productProps = {
   products?: any,
@@ -10,9 +11,10 @@ type productProps = {
   currentPage?: any,
   deleteItem?: any,
   changeQuantity?: any,
+  pagination: boolean,
 }
 
-export default function Products({ products, onPageChange, totalProducts, itemsPerPage, currentPage, deleteItem, changeQuantity }: productProps) {
+export default function Products({ pagination, products, onPageChange, totalProducts, itemsPerPage, currentPage, deleteItem, changeQuantity }: productProps) {
   const totalPages = Math.ceil(totalProducts / itemsPerPage);
 
   const handleNextPage = () => {
@@ -35,17 +37,17 @@ export default function Products({ products, onPageChange, totalProducts, itemsP
     <div className='w-full'>
       {products.length > 0 ? (
         <>
-          <div className="flex mb-[30px] mt-[100px] w-full justify-center text-lg h-[30px]">
-              <button onClick={handlePreviousPage} disabled={currentPage === 1} className="w-[200px] px-4 text-white bg-black rounded-l">
-                Anterior
+          {pagination && <div className="flex mb-[30px] h-[30px] justify-center text-lg">
+              <button onClick={handlePreviousPage} disabled={currentPage === 1} className="w-auto px-4 text-white bg-black rounded-l">
+              <FaArrowLeft />
               </button>
               <span className="flex items-center px-4 text-white bg-black">
                 {currentPage} de {totalPages}
               </span>
-              <button onClick={handleNextPage} disabled={currentPage === totalPages} className="w-[200px] px-4 text-white bg-black rounded-r">
-                Próximo
+              <button onClick={handleNextPage} disabled={currentPage === totalPages} className="w-auto px-4 text-white bg-black rounded-r">
+              <FaArrowRight />
               </button>
-          </div>
+          </div>}
           <div 
             className="flex gap-10/100 w-76/100 mx-12/100 justify-start flex-wrap bg-black/3"
           >
@@ -56,7 +58,7 @@ export default function Products({ products, onPageChange, totalProducts, itemsP
                   key={product.product ? product.product.name : product.name}
                   className="flex flex-col items-center basis-76/100 max-w-26.6/100 border-black mt-[100px] p-4" 
                 >
-                  <Link href={`/${product.product ? product.product.slug : product.slug}`}>
+                  <Link href={`/${product.product ? product.product.slug : product.slug}`} className='max-h-[300px] min-h-[300px] min-w-[250px] max-w-[250px]'>
                     <h1 className="w-full text-black text-center text-2xl font-bold mb-[20px]">{product.name}</h1>
                     <Image
                       src={
@@ -67,7 +69,7 @@ export default function Products({ products, onPageChange, totalProducts, itemsP
                       alt="Frente Da Camisa"
                       width={500}
                       height={0}
-                      className="w-full h-[400px]"
+                      className="w-full h-3/4"
                     />
                     {!changeQuantity ? <h1 className="w-full text-black text-center text-2xl font-bold mt-[20px]">R${product.variant[0].price.toFixed(2).replace('.', ',')}</h1>
                     : null}
@@ -97,19 +99,19 @@ export default function Products({ products, onPageChange, totalProducts, itemsP
               );
             })}
           </div>
-          <div className='flex w-full justify-center'>
+          {pagination && <div className='flex w-full justify-center'>
             <div className="flex mt-[30px] text-lg h-[30px]">
-              <button onClick={handlePreviousPage} disabled={currentPage === 1} className="w-[200px] px-4 text-white bg-black rounded-l">
-                Anterior
+              <button onClick={handlePreviousPage} disabled={currentPage === 1} className="w-auto px-4 text-white bg-black rounded-l">
+              <FaArrowLeft />
               </button>
               <span className="flex items-center px-4 text-white bg-black">
                 {currentPage} de {totalPages}
               </span>
-              <button onClick={handleNextPage} disabled={currentPage === totalPages} className="w-[200px] px-4 text-white bg-black rounded-r">
-                Próximo
+              <button onClick={handleNextPage} disabled={currentPage === totalPages} className="w-auto px-4 text-white bg-black rounded-r">
+              <FaArrowRight />
               </button>
             </div>
-          </div>
+          </div>}
         </>
       ) : (
         <h1 className='text-white w-full text-center'>Nenhum produto encontrado!</h1>
