@@ -1,0 +1,23 @@
+[{
+    "name": "Produto 32",
+    "slug": "produto-32",
+    "variant": {
+        "color": "Marrom Claro",
+        "images":["https://res.cloudinary.com/dgzosykzw/image/upload/v1725472823/takeshoes_images/shoes-584850_1280_qe2gsn.jpg"],
+        "price": "99",
+        "sizes": [
+            {
+                "size": "38",
+                "quantity": "4"
+            },
+            {
+                "size": "40",
+                "quantity": "10"
+            },
+            {
+                "size": "42",
+                "quantity": "6"
+            }
+        ]
+    }
+}]
