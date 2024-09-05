@@ -3,11 +3,9 @@
 import { NextPage } from 'next';
 import SlickCarousel from '../components/SlickCarousel';
 import { useEffect, useState } from 'react';
-import { CarouselSkeleton } from '../components/Skeletons';
 
 const MarketingCarousel: NextPage = () => {
   const [images, setImages] = useState<string[]>([]);
-  const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -25,7 +23,6 @@ const MarketingCarousel: NextPage = () => {
 
         const data = await response.json();
         setImages(data.images);
-        setLoading(false);
       } catch (error) {
         console.error('Unexpected error:', error);
       }
@@ -45,9 +42,8 @@ const MarketingCarousel: NextPage = () => {
   };
 
   return (
-    loading ? <CarouselSkeleton/> :
     <div className='flex w-full justify-center mt-20 '>
-      <div className='w-[900px]'>
+      <div className='w-3/5'>
         <SlickCarousel images={images} settings={marketingCarouselSettings}/>
       </div>
     </div>

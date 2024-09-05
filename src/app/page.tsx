@@ -1,16 +1,16 @@
 "use client"
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import MarketingCarousel from '../ui/client/marketing-carousel';
-import Link from 'next/link';
 import News from '../ui/client/news';
 import SearchBar from '../ui/components/SearchBar';
 import Products from '../ui/components/Products';
-import { ExplorarSkeleton } from '../ui/components/Skeletons';
+import { HomeSkeleton } from '../ui/components/Skeletons';
 import { useQuery } from '@tanstack/react-query';
 
 export default function Page() {
   const [ products, setProducts ] = useState<any[]>([])
   const [currentPage, setCurrentPage] = useState(1);
+  const productRef = useRef<HTMLDivElement>(null)
   const itemsPerPage = 12;
 
   const { isPending, error, data } = useQuery({
@@ -30,10 +30,9 @@ export default function Page() {
   }, [data])
  
   
-  if (isPending) return <ExplorarSkeleton/>;    
+  if (isPending) return <HomeSkeleton/>;    
   if (error) return 'An error has ocurred' + error.message;
 
-  console.log(data.variant)
 
   const handleSearch = (results: any[]) => {
       setProducts(results)
@@ -41,10 +40,12 @@ export default function Page() {
       console.log(results)
   };
 
-  const handlePageChange = (page: number) => {
-      window.scrollTo(0, 0);
-      setCurrentPage(page);
-  }
+
+const handlePageChange = (page: number) => {
+  setCurrentPage(page);
+  productRef.current?.scrollIntoView();
+
+};
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -52,14 +53,11 @@ export default function Page() {
 
 
   return (  
-      <div className="flex flex-col w-full mb-[100px]">
-          <h1 className="text-center text-black text-2xl font-bold mt-[50px]">Olá, seja bem-vindo a nossa loja!</h1>
+      <div className="flex flex-col w-full mb-[100px]" >
+          <h1 className="text-center text-black text-6xl font-bold mt-[150px]">Olá, seja bem-vindo a nossa loja!</h1>
           <MarketingCarousel />
           <News />
-          <Link href={'/explorar'} className='p-4 bg-black rounded-lg w-[300px] text-white text-center self-center mt-[160px]'>
-            <button>Explorar</button>
-          </Link>
-          <div className="flex flex-col w-full min-h-screen">
+          <div className="flex flex-col w-full min-h-screen" ref={productRef}>
             <SearchBar onSearch={handleSearch} />
             <Products products={currentProducts} onPageChange={handlePageChange} totalProducts={products.length} itemsPerPage={itemsPerPage} currentPage={currentPage}/>
         </div>
