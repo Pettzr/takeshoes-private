@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -23,9 +23,9 @@ export default function Products({ products, onPageChange, totalProducts, itemsP
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
-      onPageChange(currentPage - 1);
-    }
-  };
+        onPageChange(currentPage - 1);
+    };
+  }
 
   const quantityOptions = (maxQuantity: number) => {
     return Array.from({ length: maxQuantity }, (_, i) => i + 1);
@@ -35,16 +35,29 @@ export default function Products({ products, onPageChange, totalProducts, itemsP
     <div className='w-full'>
       {products.length > 0 ? (
         <>
-          <div className="flex gap-[30px] w-3/4 mx-auto justify-start flex-wrap">
+          <div className="flex mt-[50px] w-full justify-center mb-[50px] text-lg">
+              <button onClick={handlePreviousPage} disabled={currentPage === 1} className="w-[200px] px-4 py-4 text-white bg-black rounded-l">
+                Anterior
+              </button>
+              <span className="flex items-center px-4 py-2 text-white bg-black">
+                {currentPage} de {totalPages}
+              </span>
+              <button onClick={handleNextPage} disabled={currentPage === totalPages} className="w-[200px] px-4 py-2 text-white bg-black rounded-r">
+                Próximo
+              </button>
+          </div>
+          <div 
+            className="flex gap-10/100 w-76/100 mx-12/100 justify-start flex-wrap bg-black/7"
+          >
             {products.map((product: any) => {
               const options = quantityOptions(product.size?.quantity || 0);
               return (
                 <div
                   key={product.product ? product.product.name : product.name}
-                  className="flex flex-col items-center basis-1/6 mr-auto border-x border-t border-black"
+                  className="flex flex-col items-center basis-76/100 max-w-26.6/100 border-black mt-[100px] p-4" 
                 >
-                  <Link href={`/explorar/${product.product ? product.product.slug : product.slug}`}>
-                    <h1 className="w-full text-black text-center">{product.name}</h1>
+                  <Link href={`/${product.product ? product.product.slug : product.slug}`}>
+                    <h1 className="w-full text-black text-center text-2xl font-bold mb-[20px]">{product.name}</h1>
                     <Image
                       src={
                         Array.isArray(product.variant)
@@ -54,9 +67,9 @@ export default function Products({ products, onPageChange, totalProducts, itemsP
                       alt="Frente Da Camisa"
                       width={500}
                       height={0}
-                      className="max-w-[300px] h-[250px] border-y border-black"
+                      className="w-full h-[600px]"
                     />
-                    {!changeQuantity ? <h1 className="w-full text-black text-center">R${product.variant[0].price.toFixed(2).replace('.', ',')}</h1>
+                    {!changeQuantity ? <h1 className="w-full text-black text-center text-2xl font-bold mt-[20px]">R${product.variant[0].price.toFixed(2)}</h1>
                     : null}
                   </Link>
                   {changeQuantity ? (
@@ -85,14 +98,14 @@ export default function Products({ products, onPageChange, totalProducts, itemsP
             })}
           </div>
           <div className='flex w-full justify-center'>
-            <div className="flex mt-[50px]">
-              <button onClick={handlePreviousPage} disabled={currentPage === 1} className="px-4 py-2 text-white bg-black rounded-l">
+            <div className="flex mt-[150px] text-lg">
+              <button onClick={handlePreviousPage} disabled={currentPage === 1} className="w-[200px] px-4 py-4 text-white bg-black rounded-l">
                 Anterior
               </button>
-              <span className="px-4 py-2 text-white bg-black">
+              <span className="flex items-center px-4 py-2 text-white bg-black">
                 {currentPage} de {totalPages}
               </span>
-              <button onClick={handleNextPage} disabled={currentPage === totalPages} className="px-4 py-2 text-white bg-black rounded-r">
+              <button onClick={handleNextPage} disabled={currentPage === totalPages} className="w-[200px] px-4 py-4 text-white bg-black rounded-r">
                 Próximo
               </button>
             </div>

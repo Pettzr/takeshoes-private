@@ -12,7 +12,7 @@ const SlickCarousel: React.FC<SlickCarouselProps> = ({ images, settings }) => {
   return (
     <Slider {...settings}>
       {images.map((image, index) => (
-        <div key={index} className='relative h-[400px] overflow-y-hidden' >
+        <div key={index} className='relative h-[600px] overflow-y-hidden' >
           <Image src={image} alt={`Slide ${index}`} layout='fill' objectFit='cover' className='rounded-lg' />
         </div>
       ))}

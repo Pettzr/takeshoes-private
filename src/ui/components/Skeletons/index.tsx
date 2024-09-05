@@ -13,6 +13,21 @@ const settings = {
     autoplaySpeed: 2000,
   };
 
+export function HomeSkeleton() {
+    return (
+        <div className="flex justify-center">
+            <div className="flex flex-col w-full mb-[100px]">
+                <h1 className="text-center text-black text-2xl font-bold mt-[50px]">Olá, seja bem-vindo a nossa loja!</h1>
+                <CarouselSkeleton />
+                <NewsSkeleton />
+                <div className="flex flex-col w-full min-h-screen">
+                    <ExplorarSkeleton />
+                </div>
+            </div>
+        </div>
+    )
+}
+
 export function CarouselSkeleton () {
     return (
         <div className='flex w-full justify-center mt-20 '>
@@ -28,7 +43,7 @@ export function CarouselSkeleton () {
 
 export function NewsSkeleton () {
     return (
-        <div className="flex overflow-x-auto">
+        <div className="flex justify-center overflow-x-auto my-[250px]">
             <div className="w-[250px] ml-8 overflow-y-hidden h-[350px] bg-black/40 skeleton"></div>
             <div className="w-[250px] ml-8 overflow-y-hidden h-[350px] bg-black/40 skeleton"></div>
             <div className="w-[250px] ml-8 overflow-y-hidden h-[350px] bg-black/40 skeleton"></div>
@@ -38,16 +53,16 @@ export function NewsSkeleton () {
 }
 
 export function ExplorarSkeleton () {
-    const products = Array(12).fill('');
+    const products = Array(16).fill('');
     return(
-        <div className="min-h-screen skeleton">
+        <div className="min-h-screen skeleton ">
             <div className="flex w-full justify-center ">
-                <div className="p-7 bg-black text-black w-1/3 my-[100px]" />
+                <div className="p-7 bg-black text-black w-1/3 my-[100px] " />
             </div>
             <div>
-                <div className='flex gap-[80px] w-full justify-start flex-wrap ml-[100px] mr-[100px]'>
+                <div className='flex gap-[30px] w-3/4 mx-auto justify-start flex-wrap'>
                     {products.map((product: any) => (
-                    <div key={product.name} className='flex flex-col items-center basis-1/4'>
+                    <div key={product.name} className='flex flex-col items-center basis-1/6 mr-auto'>
                         <h1 className='w-full text-black text-center'>{product.name}</h1>
                         <div className='w-[200px] h-[300px] bg-black/40' />
                     </div>
@@ -71,7 +86,7 @@ export function CartSkeletonLogout () {
 }
  
 export function AdminSkeleton () {
-    const products = Array(12).fill('');
+    const products = Array(16).fill('');
     return(
         <div className="flex flex-col w-full min-h-screen">
             <div className="flex text-white justify-center mt-14">
