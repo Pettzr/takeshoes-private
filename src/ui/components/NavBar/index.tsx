@@ -16,15 +16,15 @@ import { HiPencil } from "react-icons/hi";
 export default function NavBar() {
     const { data: session } = useSession()
     const pathname = usePathname()
-    let icons = session?.user.role === "admin" ? [IoMdHome, IoIosSearch, TiShoppingCart, FaUser, MdAdminPanelSettings ] : session ? [ IoMdHome, IoIosSearch, TiShoppingCart, FaUser ] : [IoMdHome, IoIosSearch, TiShoppingCart, LuDoorOpen, HiPencil   ]
-    let links = session?.user.role === "admin" ? ["/", "/explorar", "/carrinho", '/perfil' ,"/admin" ] : session ? ["/", "/explorar", "/carrinho", '/perfil' ] : ["/", "/explorar", "/carrinho", '/entrar', '/cadastrar' ]
-    let pages = session?.user.role === "admin" ? ['Início', 'Explorar', 'Carrinho', 'Perfil', 'Admin' ] : session ? ['Início', 'Explorar', 'Carrinho', 'Perfil' ] : ['Início', 'Explorar', 'Carrinho', 'Login', 'Cadastrar-se' ]
+    let icons = session?.user.role === "admin" ? [IoMdHome, TiShoppingCart, FaUser, MdAdminPanelSettings ] : session ? [ IoMdHome, TiShoppingCart, FaUser ] : [IoMdHome, TiShoppingCart, LuDoorOpen, HiPencil   ]
+    let links = session?.user.role === "admin" ? ["/", "/carrinho", '/perfil' ,"/admin" ] : session ? ["/", "/carrinho", '/perfil' ] : ["/", "/carrinho", '/entrar', '/cadastrar' ]
+    let pages = session?.user.role === "admin" ? ['Início', 'Carrinho', 'Perfil', 'Admin' ] : session ? ['Início', 'Carrinho', 'Perfil' ] : ['Início', 'Carrinho', 'Login', 'Cadastrar-se' ]
 
     return (
         <div className="flex bg-black w-full items-center">
             <ul className="flex w-full justify-center text-white text-center ">
                 {icons.map((IconComponent, index) => (
-                    <Link key={index} href={links[index]}>
+                    <Link href={links[index]} key={index} >
                         <li className={clsx(
                             'flex cursor-pointer h-[40px] w-[200px] justify-center hover:bg-blue-500 items-center gap-4',
                             links[index] === pathname? "bg-blue-700 text-white" : "",

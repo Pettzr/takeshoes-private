@@ -11,9 +11,10 @@ type FieldsProps = {
     fields: Field[];
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+    forgotPassword?: boolean
 }
 
-export default function Form ({fields, onSubmit, onChange}: FieldsProps) {
+export default function Form ({fields, onSubmit, onChange, forgotPassword}: FieldsProps) {
 
 
     return(
@@ -30,8 +31,8 @@ export default function Form ({fields, onSubmit, onChange}: FieldsProps) {
                     />
                 </div>
             ))}
-            <Link href={'/esqueci-minha-senha'} className="text-white text-start w-2/3">Esqueceu a senha?</Link>
-            <button type="submit" className="w-[200px] text-white self-end mr-[50px] bg-blue-700 hover:bg-blue-500 rounded p-4">Enviar</button>
+            {forgotPassword && <Link href={'/esqueci-minha-senha'} className="text-white text-start w-2/3">Esqueceu a senha?</Link>}
+            <button type="submit" className="w-[200px] text-white self-end mr-[50px] bg-blue-700 hover:bg-blue-500 rounded p-4 mt-[30px]">Enviar</button>
         </form>
     )
 }
