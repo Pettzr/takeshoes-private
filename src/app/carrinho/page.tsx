@@ -26,7 +26,6 @@ export default function Page() {
   useEffect(() => {
     if(data) {
         if(Array.isArray(data)) {
-          console.log(data)
         setProducts(data)
         }
     }
@@ -117,6 +116,7 @@ export default function Page() {
 
     return (
       <div className="flex flex-col min-h-screen w-full">
+        <h1 className="text-full text-2xl font-bold text-center mt-[100px]">Carrinho</h1>
             {session.status !== 'authenticated' ? (
               <div className="w-full h-full flex justify-center items-center">
                 <TiShoppingCart className="text-[200px]" />
@@ -127,11 +127,11 @@ export default function Page() {
                 </div>
               </div>
             ) : (
-              <div className="flex flex-col mt-[100px] border border-black mx-[30px] p-12">
-                  <Products products={currentProducts} changeQuantity={handleChangeQuantity} deleteItem={handleDelete} onPageChange={handlePageChange} totalProducts={products.length} itemsPerPage={itemsPerPage} currentPage={currentPage} />
-                  <hr className="w-full mt-[30px] border-black" />
+              <div className="flex flex-col p-12">
+                  <Products pagination={false} products={currentProducts} changeQuantity={handleChangeQuantity} deleteItem={handleDelete} onPageChange={handlePageChange} totalProducts={products.length} itemsPerPage={itemsPerPage} currentPage={currentPage} />
                 <div className="w-full flex flex-col justify-center items-center mt-[100px]">
-                  <h1 className=""> Preço total: {totalPrice.toFixed(2).replace('.', ',')}</h1>
+                  <hr className="w-screen bg-black h-[2px]"/>
+                  <h1 className="mt-[40px]"> Preço total: {totalPrice.toFixed(2).replace('.', ',')}</h1>
                   <button className="w-[300px] h-[50px] rounded bg-black text-white" onClick={handleBuy}>Realizar Compra</button>
                 </div>
               </div>
