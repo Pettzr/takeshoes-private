@@ -1,6 +1,6 @@
 "use client"
 
-import Product from "@/src/ui/client/product";
+import Product from "@/src/ui/client/Product";
 import { useQuery } from "@tanstack/react-query";
 
 

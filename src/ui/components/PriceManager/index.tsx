@@ -29,7 +29,7 @@ export default function PriceManager({price, color, slug, setPrice}: PriceManage
             className="p-2 ml-[30px] text-center border-2"
             type="number"
             value={price}
-            onChange={(e: any) => setPrice(parseFloat(parseFloat(e.target.value).toFixed(2)))}
+            onChange={(e: any) => setPrice(parseFloat(parseFloat(e.target.value).toFixed(2).replace('.', ',')))}
           />
           <button
             className="bg-black text-white p-1 ml-[30px] w-[100px] rounded-lg"

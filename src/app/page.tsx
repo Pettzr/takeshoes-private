@@ -1,11 +1,11 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import MarketingCarousel from '../ui/client/marketing-carousel';
+import MarketingCarousel from '@/src/ui/client/MarketingCarousel';
 import Link from 'next/link';
-import News from '../ui/client/news';
-import SearchBar from '../ui/components/SearchBar';
-import Products from '../ui/components/Products';
-import { ExplorarSkeleton } from '../ui/components/Skeletons';
+import News from '@/src/ui/client/News';
+import SearchBar from '@/src/ui/components/SearchBar';
+import Products from '@/src/ui/components/Products';
+import { ExplorarSkeleton } from '@/src/ui/components/Skeletons';
 import { useQuery } from '@tanstack/react-query';
 
 export default function Page() {

@@ -18,7 +18,7 @@ export default function EditVariant({ slug, color, variant }: SelectedVariant) {
     const updatedVariant = variant?.filter((v) => v.color === color) || [];
     setSizes(updatedVariant.flatMap((v) => v.sizes));
     setImages(updatedVariant.flatMap((v) => v.images));
-    setPrice(updatedVariant.map((v) => v.price.toFixed(2)))
+    setPrice(updatedVariant.map((v) => v.price.toFixed(2).replace('.', ',')))
   }, [variant, color]);
   
   const handleAddSize = async () => {

@@ -32,7 +32,7 @@ export default function Page() {
     }
 }, [data])
   
-  if( session.status === 'authenticated'){
+  if ( session.status === 'authenticated') {
     if (isPending) return <ExplorarSkeleton/>;    
     if (error) return 'An error has ocurred' + error.message;
     if (!data) return <ExplorarSkeleton/>;
@@ -105,6 +105,10 @@ export default function Page() {
       console.log(`Compra dos produtos ${products.map(product => product.id)} efetuada!`)
     }
 
+    const totalPrice = products.map((product: any) => {
+      return product.variant.price * product.quantity
+    }).reduce((acc: any, curr: any) => acc + curr, 0)
+
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentProducts = products.slice(indexOfFirstItem, indexOfLastItem);
@@ -125,7 +129,8 @@ export default function Page() {
               <div className="flex flex-col mt-[100px] border border-black mx-[30px] p-12">
                   <Products products={currentProducts} changeQuantity={handleChangeQuantity} deleteItem={handleDelete} onPageChange={handlePageChange} totalProducts={products.length} itemsPerPage={itemsPerPage} currentPage={currentPage} />
                   <hr className="w-full mt-[30px] border-black" />
-                <div className="w-full flex justify-center mt-[100px]">
+                <div className="w-full flex flex-col justify-center items-center mt-[100px]">
+                  <h1 className=""> Preço total: {totalPrice.toFixed(2).replace('.', ',')}</h1>
                   <button className="w-[300px] h-[50px] rounded bg-black text-white" onClick={handleBuy}>Realizar Compra</button>
                 </div>
               </div>

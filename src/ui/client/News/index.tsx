@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { NewsSkeleton } from '../components/Skeletons';
+import { NewsSkeleton } from '@/components/Skeletons';
 import { useQuery } from '@tanstack/react-query';
 
 interface ImageWithName {
@@ -56,7 +56,7 @@ export default function News() {
                                  height={0}
                                  className="w-[250px] h-[300px]"
                                  />
-                                 <h2 className='my-[5px] text-lg'>R${item.price.toFixed(2)}</h2>
+                                 <h2 className='my-[5px] text-lg'>R${item.price.toFixed(2).replace('.', ',')}</h2>
                             </Link>
                         </div>
                     ))}

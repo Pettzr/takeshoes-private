@@ -1,9 +1,9 @@
 'use client';
 
 import { NextPage } from 'next';
-import SlickCarousel from '../components/SlickCarousel';
+import SlickCarousel from '@/src/ui/components/SlickCarousel';
 import { useEffect, useState } from 'react';
-import { CarouselSkeleton } from '../components/Skeletons';
+import { CarouselSkeleton } from '@/src/ui/components/Skeletons';
 
 const MarketingCarousel: NextPage = () => {
   const [images, setImages] = useState<string[]>([]);

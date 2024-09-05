@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import SelectVariant from "../components/SelectVariant";
-import SelectedColor from "./selected-color";
-import SelectedSizes from "./selected-sizes";
+import SelectVariant from "@/src/ui/components/SelectVariant";
+import SelectedColor from "@/src/ui/client/SelectedColor";
+import SelectedSizes from "@/src/ui/client/SelectedSizes";
 import { IoCart } from "react-icons/io5";
 import { useSession } from "next-auth/react";
 

@@ -25,6 +25,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     variant: {
                         select: {
                             images: true,
+                            price: true,
+                            color: true,
                         }
                     }
                 },
