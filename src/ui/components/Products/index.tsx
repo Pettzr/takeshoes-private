@@ -69,7 +69,7 @@ export default function Products({ products, onPageChange, totalProducts, itemsP
                       height={0}
                       className="w-full h-[600px]"
                     />
-                    {!changeQuantity ? <h1 className="w-full text-black text-center text-2xl font-bold mt-[20px]">R${product.variant[0].price.toFixed(2)}</h1>
+                    {!changeQuantity ? <h1 className="w-full text-black text-center text-2xl font-bold mt-[20px]">R${product.variant[0].price.toFixed(2).replace('.', ',')}</h1>
                     : null}
                   </Link>
                   {changeQuantity ? (

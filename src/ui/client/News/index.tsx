@@ -56,7 +56,7 @@ export default function News() {
                                  height={0}
                                  className="w-[300px] h-[400px]"
                                  />
-                                 <h2 className='my-[5px] text-2xl font-bold'>R${item.price.toFixed(2)}</h2>
+                                 <h2 className='my-[5px] text-2xl font-bold'>R${item.price.toFixed(2).replace('.', ',')}</h2>
                             </Link>
                         </div>
                     ))}
