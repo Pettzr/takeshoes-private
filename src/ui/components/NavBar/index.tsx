@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react"
 import { IoMdHome } from "react-icons/io";
-import { IoIosSearch } from "react-icons/io";
 import { TiShoppingCart } from "react-icons/ti";
 import { FaUser } from "react-icons/fa";
 import { MdAdminPanelSettings } from "react-icons/md";

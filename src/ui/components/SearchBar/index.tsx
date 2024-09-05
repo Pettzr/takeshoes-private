@@ -39,7 +39,7 @@ export default function SearchBar({ onSearch }: {onSearch: (results: any[]) => v
         <form method="POST"  onSubmit={onSubmit} className="flex flex-col w-full items-center">
             <h1 className="text-4xl text-center w-full mt-[100px] font-bold">Dê uma olhada em nossos produtos!</h1>
             <input 
-            className="p-4 bg-black text-white w-1/3 mb-[100px] mt-[50px] text-3xl" 
+            className="p-2 bg-black text-white w-1/3 mt-[50px] text-xl rounded" 
             placeholder="Digite o produto desejado..."
             onChange={onChange}
             />

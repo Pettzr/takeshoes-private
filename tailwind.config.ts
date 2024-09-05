@@ -11,7 +11,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'black/7': 'rgba(0, 0, 0, 0.15)',
+        'black/3': 'rgba(0, 0, 0, 0.03)',
       },
        margin: {
           '1/10': '10%',

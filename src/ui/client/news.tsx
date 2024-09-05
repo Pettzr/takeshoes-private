@@ -43,10 +43,10 @@ export default function News() {
             <div>
                 <h1 className='w-full text-center text-black mb-[70px] text-4xl font-bold'>Últimas Novidades</h1>
                 {loading ? <NewsSkeleton/> :
-                <div className='flex overflow-x-auto gap-8'>
+                <div className='flex overflow-x-auto gap-8 bg-black/5'>
                     {images.map((item, index) => (
                         <div key={index}>
-                            <Link href={`/explorar/${item.slug}`} className='flex flex-col overflow-y-hidden items-center justify-center border border-black'>
+                            <Link href={`/explorar/${item.slug}`} className='flex flex-col overflow-y-hidden items-center justify-center'>
                                 <h2 className='text-black text-center text-xl font-bold'>{item.name}</h2>
                                 <Image
                                  src={item.image[0]} 
@@ -54,7 +54,7 @@ export default function News() {
                                  objectFit='cover' 
                                  width={250}
                                  height={0}
-                                 className="w-[300px] h-[400px]"
+                                 className="w-[250px] h-[250px]"
                                  />
                                  <h2 className='my-[5px] text-2xl font-bold'>R${item.price.toFixed(2)}</h2>
                             </Link>
