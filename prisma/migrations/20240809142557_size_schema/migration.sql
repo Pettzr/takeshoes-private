@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Size" ALTER COLUMN "price" SET DEFAULT 0,
+ALTER COLUMN "quantity" SET DEFAULT 0;
