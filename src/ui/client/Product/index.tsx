@@ -4,11 +4,14 @@ import SelectedColor from "@/src/ui/client/SelectedColor";
 import SelectedSizes from "@/src/ui/client/SelectedSizes";
 import { IoCart } from "react-icons/io5";
 import { useSession } from "next-auth/react";
+import { ProductSkeleton } from "../../components/Skeletons";
+import { useQueryClient } from '@tanstack/react-query';
 
 export default function Product({ data }: any) {
     const [selectedVariant, setSelectedVariant] = useState<string>("");
     const [selectedSize, setSelectedSize] = useState<string>("");
-    const [selectedQuantity, setSelectedQuantity] = useState<number>(0)
+    const [selectedQuantity, setSelectedQuantity] = useState<number>(0);
+    const queryClient = useQueryClient();
     const session = useSession()
 
     useEffect(() => {
@@ -50,6 +53,9 @@ export default function Product({ data }: any) {
                     console.error('Erro ao inserir o produto no carrinho:', dataResponse);
                     alert('Erro ao inserir produto no carrinho: ' + dataResponse.error);
                 }
+
+                queryClient.invalidateQueries({ queryKey: ['cart-icon'] });
+
             } catch (error) {
                 console.error('Erro inesperado', error);
             }
@@ -58,7 +64,7 @@ export default function Product({ data }: any) {
         }
     }
 
-    if (!data) return <h1>Loading...</h1>;
+    if (!data) return <ProductSkeleton/>;
 
     return (
         <div className="w-[1000px] h-[700px] mt-[200px] border-2 border-white">

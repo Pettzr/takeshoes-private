@@ -53,7 +53,7 @@ export function NewsSkeleton () {
 }
 
 export function ExplorarSkeleton () {
-    const products = Array(16).fill('');
+    const products = Array(12).fill('');
     return(
         <div className="min-h-screen skeleton ">
             <div className="flex w-full justify-center ">
@@ -102,6 +102,12 @@ export function AdminSkeleton () {
 }
 
 export function ProductSkeleton () {
+
+    return (
     <div className="w-[1000px] h-[700px] mt-[200px] border-2 border-white">
+        <div className="relative left-48 ">
+         <div className="ml-[200px] mt-[50px]"></div>
+        </div>
     </div>
+    )
 }

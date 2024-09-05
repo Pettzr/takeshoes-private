@@ -1,6 +1,7 @@
 "use client"
 
 import Product from "@/src/ui/client/Product";
+import { ProductSkeleton } from "@/src/ui/components/Skeletons";
 import { useQuery } from "@tanstack/react-query";
 
 
@@ -12,7 +13,7 @@ export default function Page({ params }: { params: { slug: string} }) {
         enabled: !!slug,
     });
     console.log(data)
-    if (isPending) return <div>Loading...</div>;
+    if (isPending) return <ProductSkeleton/>;
     if (error) return <div>Error fetching product data.</div>;
     if (!data) return <div>No product found for slug {slug}</div>;
 

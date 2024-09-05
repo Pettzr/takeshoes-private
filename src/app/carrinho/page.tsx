@@ -61,6 +61,7 @@ export default function Page() {
       });
       
       queryClient.invalidateQueries({queryKey: ["cart-products"]});
+      queryClient.invalidateQueries({ queryKey: ['cart-icon'] });
       } catch (error) {
           console.error('Erro inespereado', error);
           setProducts(previousProducts);
