@@ -78,6 +78,7 @@ const handlePageChange = (page: number) => {
 
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSortOrder(e.target.value);
+    setCurrentPage(1)
   };
 
 
