@@ -1,13 +1,16 @@
 'use client'
 
+import { useQueryClient } from "@tanstack/react-query";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 export default function Page() {
     const router = useRouter();
+    const queryClient = useQueryClient();
 
       const handleSignOut = async () => {
         await signOut({redirect: false});
+        queryClient.invalidateQueries({ queryKey: ['cart-icon'] });
         router.push('/');
       }
 

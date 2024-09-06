@@ -14,8 +14,10 @@ export default function CartIcon () {
     });
 
     useEffect(() => {
-        if(data){
-          setProducts(data.length)
+        if(!data?.length){
+          setProducts(0)
+        } else {
+            setProducts(data.length)
         }
       }, [data]);
 
