@@ -92,8 +92,6 @@ model Purchase {
   size                Size            @relation(fields: [sizeId], references: [id])
   sizeId              Int
   quantity            Int             @default(1)
-
-  @@unique([userId, productId ,variantId ,sizeId])
 }
 
 model VerificationToken{ 

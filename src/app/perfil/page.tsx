@@ -4,6 +4,7 @@ import PurchaseHistory from "@/src/ui/components/PurchaseHistory";
 import { useQueryClient } from "@tanstack/react-query";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { FaUser } from "react-icons/fa";
 
 export default function Page() {
     const router = useRouter();
@@ -16,11 +17,14 @@ export default function Page() {
       }
 
     return (
-        <div className="flex w-screen min-h-full">
-            <main className="w-screen flex flex-col justify-center items-center">
-                    <button onClick={handleSignOut} className="text-white w-[100px] p-2 bg-[#3a0ca3] mt-[20px]">Logout</button>
-                    <PurchaseHistory/>
-            </main>
+        <div className="flex flex-col w-screen min-h-screen">
+              <div className="flex justify-end mr-1/20 items-center mt-[30px] ">
+                <div className="flex border-2 rounded-xl p-4">
+                  <FaUser color="black" size={50} />
+                  <button onClick={handleSignOut} className="text-white h-[30px] w-[100px] text-sm rounded bg-black ]">Deslogar</button>
+                </div>
+              </div>
+              <PurchaseHistory/>
         </div>
     )
 }

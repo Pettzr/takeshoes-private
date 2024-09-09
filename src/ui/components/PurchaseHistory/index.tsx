@@ -38,12 +38,12 @@ export default function PurchaseHistory () {
         <div className='w-full '>
         {products.length > 0 ? (
           <>
-            <div className="flex  w-76/100 mx-12/100 justify-start p-8 flex-wrap ">
+            <div className="flex w-76/100 mx-12/100 justify-center p-8 flex-wrap">
               {products.map((product: any) => {
                 return (
                   <div
                     key={product.product ? product.product.name : product.name}
-                    className="flex items-center justify-center max-w-1/4 border-black p-4" 
+                    className="flex items-center justify-center max-w-full border-black p-4" 
                   >
                     <Link href={`/${product.product ? product.product.slug : product.slug}`} className='flex items-center max-h-[300px] min-h-[300px] min-w-[200px] max-w-[200px] '>
                       <h1 className="w-full text-black text-center text-2xl font-bold mb-[20px]">{product.name}</h1>
@@ -72,6 +72,9 @@ export default function PurchaseHistory () {
                           Preço: 
                           <h1 className='text-black ml-[15px]'>R${(product.variant.price * product.quantity).toFixed(2).replace('.', ',')}</h1>
                         </label>
+                      </div>
+                      <div className="flex bg-black h-[200px] p-2 text-white items-center">
+                        Enviando...
                       </div>
                   </div>
                 );
