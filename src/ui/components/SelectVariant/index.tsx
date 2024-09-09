@@ -1,4 +1,3 @@
-import Product from "../../client/Product";
 import { ProductSkeleton } from "../Skeletons";
 
 export default function SelectVariant({ variants = [], handleSelect, showCreateOption = true, selectedVariant }: SelectVariant) {
@@ -7,7 +6,7 @@ export default function SelectVariant({ variants = [], handleSelect, showCreateO
     };
   
     if (!variants || variants.length === 0) {
-      return <ProductSkeleton/>; // Renderizar algo diferente se não houver variantes
+      return <ProductSkeleton/>; 
     }
   
     return (

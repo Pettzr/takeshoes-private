@@ -4,7 +4,6 @@ import SelectedColor from "@/src/ui/client/SelectedColor";
 import SelectedSizes from "@/src/ui/client/SelectedSizes";
 import { IoCart } from "react-icons/io5";
 import { useSession } from "next-auth/react";
-import { ProductSkeleton } from "../../components/Skeletons";
 import { useQueryClient } from '@tanstack/react-query';
 
 export default function Product({ data }: any) {

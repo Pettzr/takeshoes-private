@@ -2,18 +2,14 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-type productProps = {
+type cartProductProps = {
   products?: any,
-  onPageChange?: any,
-  totalProducts?: any, 
-  itemsPerPage?: any, 
-  currentPage?: any,
-  deleteItem?: any,
-  changeQuantity?: any,
-  pagination: boolean,
+  deleteItem: any,
+  changeQuantity: any,
+
 }
 
-export default function CartProducts({ products, deleteItem, changeQuantity }: productProps) {
+export default function CartProducts({ products, deleteItem, changeQuantity }: cartProductProps) {
 
   const quantityOptions = (maxQuantity: number) => {
     return Array.from({ length: maxQuantity }, (_, i) => i + 1);
