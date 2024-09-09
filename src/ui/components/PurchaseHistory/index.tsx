@@ -1,45 +1,63 @@
-import { useQuery } from "@tanstack/react-query"
+import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export default function PurchaseHistory () {
-    const [ products, setProducts ] = useState<any[]>([]);
-    const {data, isPending, error} = useQuery({
-        queryKey: ['purchaseProducts'],
-        queryFn: async () => {
-            try{
-                const response = await fetch('/api/user/get-purchase-history')
-                if (!response.ok) {
-                    throw new Error('Erro ao buscar histórico de compras');
-                }
-                const data = await response.json();
-                return data
-            } catch (error) {
-                console.error(error);
-            }
+export default function PurchaseHistory() {
+  const [products, setProducts] = useState<any[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12;
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentProducts = products.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(products.length / itemsPerPage);
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const { data, isPending, error } = useQuery({
+    queryKey: ["purchaseProducts"],
+    queryFn: async () => {
+      try {
+        const response = await fetch("/api/user/get-purchase-history");
+        if (!response.ok) {
+          throw new Error("Erro ao buscar histórico de compras");
         }
-    })
+        const data = await response.json();
+        return data;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  });
 
-    useEffect(() => {
-        if(data) {
-            if(Array.isArray(data)) {
-            setProducts(data)
-            }
-        }
-      }, [data])
+  useEffect(() => {
+    if (data) {
+      if (Array.isArray(data)) {
+        setProducts(data);
+      }
+    }
+  }, [data]);
 
-
-    if (isPending) return <h1>Loading...</h1>;    
-    if (error) return 'An error has ocurred' + error.message;
-    if (!data) return <h1>Data not found</h1>;
-
+  if (isPending) return <h1>Loading...</h1>;
+  if (error) return "An error has occurred: " + error.message;
+  if (!data) return <h1>Data not found</h1>;
     return(
         <div className='w-full '>
         {products.length > 0 ? (
           <>
             <div className="flex w-76/100 mx-12/100 justify-center p-8 flex-wrap">
-              {products.map((product: any) => {
+              {currentProducts.map((product: any) => {
                 return (
                   <div
                     key={product.product ? product.product.name : product.name}
@@ -80,6 +98,25 @@ export default function PurchaseHistory () {
                 );
               })}
             </div>
+            <div className="flex mb-[30px] h-[30px] justify-center text-lg">
+            <button
+              onClick={handlePreviousPage}
+              disabled={currentPage === 1}
+              className="flex w-auto p-4 text-white items-center bg-black rounded-l"
+            >
+              Voltar
+            </button>
+            <span className="flex items-center p-4 text-white bg-black">
+              {currentPage} de {totalPages}
+            </span>
+            <button
+              onClick={handleNextPage}
+              disabled={currentPage === totalPages}
+              className="flex w-auto p-4 text-white items-center bg-black rounded-r"
+            >
+              Próximo
+            </button>
+          </div>
           </>
         ) : (
           <h1 className='text-white w-full text-center'>Nenhum produto encontrado!</h1>
