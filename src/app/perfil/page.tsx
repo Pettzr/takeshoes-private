@@ -1,5 +1,6 @@
 'use client'
 
+import PurchaseHistory from "@/src/ui/components/PurchaseHistory";
 import { useQueryClient } from "@tanstack/react-query";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -15,12 +16,11 @@ export default function Page() {
       }
 
     return (
-        <div className="flex h-screen">
-            <div className="flex-1 flex flex-col">
-                <main className="w-full h-screen flex justify-center items-center">
+        <div className="flex w-screen h-screen">
+            <main className="w-screen h-screen flex flex-col justify-center items-center">
                     <button onClick={handleSignOut} className="text-white w-[100px] p-2 bg-[#3a0ca3]">Logout</button>
-                </main>
-            </div>
+                    <PurchaseHistory/>
+            </main>
         </div>
     )
 }

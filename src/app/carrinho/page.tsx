@@ -29,7 +29,9 @@ export default function Page() {
         setProducts(data)
         }
     }
-}, [data])
+  }, [data])
+
+  console.log(data)
   
   if ( session.status === 'authenticated') {
     if (isPending) return <ExplorarSkeleton/>;    
@@ -45,10 +47,10 @@ export default function Page() {
         return null
       }
 
-    const previousProducts = [...products];
-    const updatedProducts = products.filter(product => product.id !== itemId);
+  const previousProducts = [...products];
+  const updatedProducts = products.filter(product => product.id !== itemId);
 
-    setProducts(updatedProducts)
+  setProducts(updatedProducts)
 
     try {
         await fetch('/api/user/remove-item-cart', {
@@ -101,8 +103,31 @@ export default function Page() {
       setCurrentPage(page);
     }
 
-    const handleBuy = () => {
-      console.log(`Compra dos produtos ${products.map(product => product.id)} efetuada!`)
+    const handleBuy = async () => {
+        try {
+          const response = await fetch('/api/user/add-to-purchase',{
+              method: 'POST',
+              headers: {
+                  'Content-type': 'application/json'
+              },
+              body : JSON.stringify({user: session.data?.user.email, data:data })
+          })
+  
+          const dataResponse = await response.json()
+          
+  
+          if (response.ok) {
+              alert('Pedido feito com sucesso!');
+          } else {
+              console.error('Erro ao fazer pedido:', dataResponse);
+              alert('Erro ao fazer pedido: ' + dataResponse.error);
+          }
+  
+          queryClient.invalidateQueries({ queryKey: ['cart-icon'] });
+  
+      } catch (error) {
+          console.error('Erro inesperado', error);
+      }
     }
 
     const totalPrice = products.map((product: any) => {

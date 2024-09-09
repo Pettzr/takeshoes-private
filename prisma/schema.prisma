@@ -9,46 +9,51 @@ generator client {
 }
 
 model Product {
-  id        Int              @id @default(autoincrement())
-  name      String           @unique
-  slug      String           @unique
-  createdAt DateTime         @default(now())
-  updatedAt DateTime         @updatedAt
-  variant   ProductVariant[]
-  cartItems Cart[]
+  id               Int                @id @default(autoincrement())
+  name             String             @unique
+  slug             String             @unique
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  variant          ProductVariant[]
+  cartItems        Cart[]
+  purchase         Purchase[]
 }
 
 model ProductVariant {
-  id            Int      @id @default(autoincrement())
-  product       Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
-  productId     Int
-  price         Float    @default(0)
-  color         String 
-  sizes         Size[]  
-  images        String[]
-  cartItems     Cart[]  
+  id               Int                     @id @default(autoincrement())
+  product          Product                 @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId        Int
+  price            Float                   @default(0)
+  color            String 
+  sizes            Size[]  
+  images           String[]
+  cartItems        Cart[]  
+  purchase         Purchase[]
 
   @@unique([productId, color])
 }
 
 model Size {
-  id          Int      @id @default(autoincrement())
-  size        String
-  variant     ProductVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
-  variantId   Int      
-  quantity    Int      @default(0)
-  createdAt   DateTime @default(now())
-  cartItems   Cart[]
+  id                Int                       @id @default(autoincrement())
+  size              String
+  variant           ProductVariant            @relation(fields: [variantId], references: [id], onDelete: Cascade)
+  variantId         Int      
+  quantity          Int                       @default(0)
+  createdAt         DateTime                  @default(now())
+  cartItems         Cart[]
+  purchase          Purchase[]
 
   @@unique([variantId, id])
 }
 
 model User {
-  id         Int       @id @default(autoincrement())
-  email      String    @unique
-  password   String
-  role       String    @default("user")
-  cartItems  Cart[]
+  id                Int                 @id @default(autoincrement())
+  email             String              @unique
+  password          String
+  role              String              @default("user")
+  cartItems         Cart[]
+  purchase          Purchase[]
+  purchaseHistory   PurchaseHistory[]
 }
 
 model Cart {
@@ -62,6 +67,31 @@ model Cart {
   size       Size            @relation(fields: [sizeId], references: [id], onDelete: Cascade)
   sizeId     Int
   quantity   Int             @default(1)
+
+  @@unique([userId, productId ,variantId ,sizeId])
+}
+
+model PurchaseHistory {
+  id          Int             @id @default(autoincrement())
+  purchaseIds Int[]
+  status      String          @default("processando pedido")
+  user        User            @relation(fields: [userId], references: [id])
+  userId      Int
+
+  @@unique([userId, id])
+}
+
+model Purchase {
+  id                  Int             @id @default(autoincrement())
+  user                User            @relation(fields: [userId], references: [id])
+  userId              Int
+  product             Product         @relation(fields: [productId], references: [id])
+  productId           Int
+  variant             ProductVariant  @relation(fields: [variantId], references: [id])
+  variantId           Int
+  size                Size            @relation(fields: [sizeId], references: [id])
+  sizeId              Int
+  quantity            Int             @default(1)
 
   @@unique([userId, productId ,variantId ,sizeId])
 }
