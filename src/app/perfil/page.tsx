@@ -16,9 +16,9 @@ export default function Page() {
       }
 
     return (
-        <div className="flex w-screen h-screen">
-            <main className="w-screen h-screen flex flex-col justify-center items-center">
-                    <button onClick={handleSignOut} className="text-white w-[100px] p-2 bg-[#3a0ca3]">Logout</button>
+        <div className="flex w-screen min-h-full">
+            <main className="w-screen flex flex-col justify-center items-center">
+                    <button onClick={handleSignOut} className="text-white w-[100px] p-2 bg-[#3a0ca3] mt-[20px]">Logout</button>
                     <PurchaseHistory/>
             </main>
         </div>
