@@ -64,12 +64,10 @@ export default function Product({ data }: any) {
         }
     }
 
-    if (!data) return <ProductSkeleton/>;
-
     return (
-        <div className="w-[1000px] h-[700px] mt-[200px] border-2 border-white">
-            <h1 className=" w-full text-center">{data.name}</h1>
-            <div className="relative left-48 ">
+        <div className="w-3/4 mt-[50px] border-2 border-black min-h-screen p-12 rounded">
+            <h1 className=" w-full text-center text-xl font-bold">{data.name}</h1>
+            <div className="flex justify-center w-full">
                 <SelectVariant
                     variants={data.variant}
                     handleSelect={handleSelect}
@@ -80,7 +78,7 @@ export default function Product({ data }: any) {
             <SelectedColor selectedColor={selectedVariant} variant={data.variant} />
             <SelectedSizes selectedColor={selectedVariant} variant={data.variant} handleSizeSelect={handleSizeSelect} handleQuantitySelect={handleQuantitySelect} />
             <div className="flex w-full justify-end items-center mt-8">
-                <button onClick={handleAddToCart} className="h-[60px] w-[400px] bg-green-600 rounded-xl justify-end">
+                <button onClick={handleAddToCart} className="h-[60px] w-[400px] bg-black text-white rounded-xl justify-end">
                     Adicionar ao carrinho
                 </button>
                 <IoCart color="white" size={35} className="relative right-16" />

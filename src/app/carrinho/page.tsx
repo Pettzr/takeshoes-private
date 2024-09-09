@@ -1,6 +1,6 @@
 "use client";
 
-import Products from "@/src/ui/components/Products";
+import CartProducts from "@/src/ui/client/CartProducts";
 import { CartSkeletonLogout, ExplorarSkeleton } from "@/src/ui/components/Skeletons";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
@@ -153,7 +153,7 @@ export default function Page() {
               </div>
             ) : (
               <div className="flex flex-col p-12">
-                  <Products pagination={false} products={currentProducts} changeQuantity={handleChangeQuantity} deleteItem={handleDelete} onPageChange={handlePageChange} totalProducts={products.length} itemsPerPage={itemsPerPage} currentPage={currentPage} />
+                  <CartProducts pagination={false} products={currentProducts} changeQuantity={handleChangeQuantity} deleteItem={handleDelete} onPageChange={handlePageChange} totalProducts={products.length} itemsPerPage={itemsPerPage} currentPage={currentPage} />
                 <div className="w-full flex flex-col justify-center items-center mt-[100px]">
                   <hr className="w-screen bg-black h-[2px]"/>
                   <h1 className="mt-[40px]"> Preço total: {totalPrice.toFixed(2).replace('.', ',')}</h1>

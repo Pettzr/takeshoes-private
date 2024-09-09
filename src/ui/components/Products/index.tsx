@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 type productProps = {
   products?: any,
@@ -37,28 +36,28 @@ export default function Products({ pagination, products, onPageChange, totalProd
     <div className='w-full'>
       {products.length > 0 ? (
         <>
-          {pagination && <div className="flex mb-[30px] h-[30px] justify-center text-lg">
-              <button onClick={handlePreviousPage} disabled={currentPage === 1} className="w-auto px-4 text-white bg-black rounded-l">
-              <FaArrowLeft />
+          {pagination && <div className="flex mb-[30px] h-[30px] justify-center text-lg ">
+              <button onClick={handlePreviousPage} disabled={currentPage === 1} className="flex w-auto p-4 text-white items-center bg-black rounded-l">
+              Voltar
               </button>
-              <span className="flex items-center px-4 text-white bg-black">
+              <span className="flex items-center p-4 text-white bg-black">
                 {currentPage} de {totalPages}
               </span>
-              <button onClick={handleNextPage} disabled={currentPage === totalPages} className="w-auto px-4 text-white bg-black rounded-r">
-              <FaArrowRight />
+              <button onClick={handleNextPage} disabled={currentPage === totalPages} className="flex w-auto p-4 text-white items-center bg-black rounded-r">
+              Próximo
               </button>
           </div>}
           <div 
-            className="flex gap-10/100 w-76/100 mx-12/100 justify-start flex-wrap bg-black/3"
+            className="flex gap-10/100 gap-y-[400px] w-76/100 mx-12/100 justify-start p-8 flex-wrap space-t-72"
           >
             {products.map((product: any) => {
               const options = quantityOptions(product.size?.quantity || 0);
               return (
                 <div
                   key={product.product ? product.product.name : product.name}
-                  className="flex flex-col items-center basis-76/100 max-w-26.6/100 border-black mt-[100px] p-4" 
+                  className="flex flex-col items-center basis-76/100 max-w-26.6/100 border-black p-4" 
                 >
-                  <Link href={`/${product.product ? product.product.slug : product.slug}`} className='max-h-[300px] min-h-[300px] min-w-[250px] max-w-[250px]'>
+                  <Link href={`/${product.product ? product.product.slug : product.slug}`} className='max-h-[300px] min-h-[300px] min-w-[400px] max-w-[400px] '>
                     <h1 className="w-full text-black text-center text-2xl font-bold mb-[20px]">{product.name}</h1>
                     <Image
                       src={
@@ -69,7 +68,7 @@ export default function Products({ pagination, products, onPageChange, totalProd
                       alt="Frente Da Camisa"
                       width={500}
                       height={0}
-                      className="w-full h-3/4"
+                      className="w-full border-2 border p-4 h-[400px]"
                     />
                     {!changeQuantity ? <h1 className="w-full text-black text-center text-2xl font-bold mt-[20px]">R${product.variant[0].price.toFixed(2).replace('.', ',')}</h1>
                     : null}
@@ -99,16 +98,16 @@ export default function Products({ pagination, products, onPageChange, totalProd
               );
             })}
           </div>
-          {pagination && <div className='flex w-full justify-center'>
-            <div className="flex mt-[30px] text-lg h-[30px]">
-              <button onClick={handlePreviousPage} disabled={currentPage === 1} className="w-auto px-4 text-white bg-black rounded-l">
-              <FaArrowLeft />
+          {pagination && <div className='flex w-full justify-center mt-[300px]'>
+            <div className="flex mt-[30px] text-lg h-[30px] ">
+              <button onClick={handlePreviousPage} disabled={currentPage === 1} className="flex w-auto p-4 text-white items-center bg-black rounded-l">
+              Voltar
               </button>
-              <span className="flex items-center px-4 text-white bg-black">
+              <span className="flex items-center p-4 text-white bg-black">
                 {currentPage} de {totalPages}
               </span>
-              <button onClick={handleNextPage} disabled={currentPage === totalPages} className="w-auto px-4 text-white bg-black rounded-r">
-              <FaArrowRight />
+              <button onClick={handleNextPage} disabled={currentPage === totalPages} className="flex items-center w-auto p-4 text-white bg-black rounded-r">
+              Próximo
               </button>
             </div>
           </div>}

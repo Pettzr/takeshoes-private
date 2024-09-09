@@ -18,8 +18,7 @@ export default function Page({ params }: { params: { slug: string} }) {
     if (!data) return <div>No product found for slug {slug}</div>;
 
     return(
-        <div className="flex w-full flex-col items-center min-h-screen mb-[300px]">
-                <h1 className="text-center text-2xl font-bold">Olá, seja bem-vindo!</h1>
+        <div className="flex w-full flex-col items-center min-h-screen mb-[50px]">
                 <div className="flex w-full justify-center">
                     <Product data={data} />
                 </div>

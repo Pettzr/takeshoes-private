@@ -48,11 +48,11 @@ export default function SelectedColor({ variant = [], selectedColor }: ImageVari
   return (
     <>
       {selectedVariant && (
-        <div className="">
+        <div className="bor">
           <div className="flex p-4 gap-2 justify-center">
             <div className="relative w-[500px] h-[500px]">
               <Image
-                className="border-[1px] border-black"
+                className="border-[1px] border-4"
                 src={selectedImage || selectedVariant.images[0]}
                 layout="fill"
                 alt={`Frente da camisa ${selectedVariant.color}`}
@@ -65,7 +65,7 @@ export default function SelectedColor({ variant = [], selectedColor }: ImageVari
               key={image}
               className={clsx(
                 "relative w-[100px] h-[100px] cursor-pointer",
-                permanentImage === image && "border-8 border-gray-700"
+                permanentImage === image && "border border-black"
               )}
               onMouseEnter={() => handleHover(image)}
               onMouseLeave={handleMouseLeave}
