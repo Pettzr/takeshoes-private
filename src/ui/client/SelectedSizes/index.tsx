@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 interface Size {
     id: string;
@@ -23,15 +23,30 @@ export default function SelectedSizes({ selectedColor, variant = [], handleSizeS
     const sizes = useMemo(() => {
         if (!Array.isArray(variant)) return [];
         const selectedVariant = variant.find((variant: any) => variant.color === selectedColor);
-        console.log('Selected Variant:', selectedVariant); // Depuração
+        console.log('Selected Variant:', selectedVariant); 
         return selectedVariant ? selectedVariant.sizes : [];
     }, [selectedColor, variant]);
 
-    console.log('Sizes:', sizes); // Depuração
+    useEffect(() => {
+        if (sizes.length > 0) {
+            const firstSize = sizes[0];
+            setSelectedSizeId(firstSize.id);
+            setAvailableQuantity(firstSize.quantity);
+            handleSizeSelect(firstSize.id);
+        } else {
+            setSelectedSizeId("");
+            setAvailableQuantity(0);
+        }
+    }, [sizes]);
+
+    useEffect(() => {
+        if(availableQuantity > 0) {
+            setQuantityValue(1)
+        }
+    }, [availableQuantity])
 
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedSizeId = e.target.value;
-        console.log('Selected Size ID:', selectedSizeId); // Depuração
         setSelectedSizeId(selectedSizeId);
         handleSizeSelect(selectedSizeId);
 
@@ -48,37 +63,34 @@ export default function SelectedSizes({ selectedColor, variant = [], handleSizeS
     };
 
     const selectedSize = useMemo(() => {
-        // Força a comparação como string
         const size = sizes.find((size: Size) => size.id.toString() === selectedSizeId);
-        console.log('Selected Size:', size); // Depuração
         return size || null;
     }, [sizes, selectedSizeId]);
 
-    const selectedPrice = useMemo(() => {
+    let selectedPrice = useMemo(() => {
         if (!Array.isArray(variant)) return [];
         const selectedVariant = variant.find((variant: any) => variant.color === selectedColor);
-        console.log('Selected Variant:', selectedVariant); // Depuração
         return selectedVariant ? selectedVariant.price : [];
     }, [selectedColor, variant ]);
 
     return (
-        <div>
+        <div className="flex mt-[100px] w-full">
             <div>
-                <select onChange={handleChange} value={selectedSizeId}>
-                    <option value="" disabled>Selecione o tamanho</option>
-                    {sizes.map((size: Size) => (
-                        <option key={size.id} value={size.id}>
-                            {size.size}
-                        </option>
-                    ))}
-                </select>
+                <label className="flex border-black border  p-4 bg-white items-center text-md rounded"> Selecione o tamanho:
+                    <select onChange={handleChange} value={selectedSizeId} className="ml-[30px] border-black border text-center">
+                        {sizes.map((size: Size) => (
+                            <option key={size.id} value={size.id}>
+                                {size.size}
+                            </option>
+                        ))}
+                    </select>
+                </label>
             </div>
-                <div>
-                { selectedSize && (
-                <div>
-                    <h4 className="">Quantidade:</h4>
-                    <select onChange={handleQuantityChange} value={quantityValue}>
-                        <option value={0}>0</option>
+            <div className="ml-[40px] p-4 bg-white rounded border-black border">
+                <div className="flex text-center items-center">
+                    <h4 className="text-md mr-[10px]">Quantidade:</h4>
+                    <select onChange={handleQuantityChange} value={quantityValue} className="border-black border-2 w-[50px]">
+                        <option value={0}>{0}</option>
                         {[...Array(availableQuantity)].map((_, index) => (
                             <option key={index + 1} value={index + 1}>
                                 {index + 1}
@@ -86,14 +98,13 @@ export default function SelectedSizes({ selectedColor, variant = [], handleSizeS
                         ))}
                     </select>
                 </div>
-                )}
                 {availableQuantity === 0 && selectedSize && (
                     <h2>Estoque indisponível</h2>
                 )}
             </div>
-            <div>
+            <div className="flex p-4 text-center items-center bg-white ml-auto mr-1/10 w-[200px] rounded border-black border">
                 {selectedPrice !== null ? (
-                    <h1 className="">Preço: R$ {selectedPrice * quantityValue}</h1>
+                    <h1 className="w-full mr-[10px] text-xl">R$ {selectedPrice * quantityValue}</h1>
                 ) : (
                     <h1 className="">Selecione um tamanho para ver o preço</h1>
                 )}

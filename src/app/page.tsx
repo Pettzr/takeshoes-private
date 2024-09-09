@@ -10,8 +10,8 @@ import { useQuery } from '@tanstack/react-query';
 export default function Page() {
   const [ products, setProducts ] = useState<any[]>([])
   const [currentPage, setCurrentPage] = useState(1);
-  const options = ["created_at_desc", "price_asc", "price_desc", ]
-  const textOptions = ['Mais Recentes', 'Menor preço', 'Maior preço',]
+  const options = ["created_at_asc" ,"created_at_desc", "price_asc", "price_desc", ]
+  const textOptions = ['Início' ,'Mais Recentes', 'Menor preço', 'Maior preço',]
   const [sortOrder, setSortOrder] = useState(''); 
   const [sortedProducts, setSortedProducts] = useState<any[]>([]);
   const productRef = useRef<HTMLDivElement>(null)
@@ -83,11 +83,11 @@ const handlePageChange = (page: number) => {
 
 
   return (  
-      <div className="flex flex-col w-full mb-[100px]" >
-          <h1 className="text-center text-black text-6xl font-bold mt-[150px]">Olá, seja bem-vindo a nossa loja!</h1>
+      <div className="flex flex-col w-full mb-[100px] min-h-screen" >
+          <h1 className="text-center text-black text-5xl font-bold my-[100px]">Olá, seja bem-vindo a nossa loja!</h1>
           <MarketingCarousel />
           <News />
-          <div className="flex flex-col w-full min-h-screen" ref={productRef}>
+          <div className="flex flex-col w-full" ref={productRef}>
             <SearchBar onSearch={handleSearch} />
             <div className="flex flex-col justify-start ml-12/100">
               <label htmlFor="sortOrder" className="mr-2">Ordenar por:</label>

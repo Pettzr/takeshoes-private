@@ -11,11 +11,11 @@ export default function SelectVariant({ variants = [], handleSelect, showCreateO
     }
   
     return (
-      <div className="ml-[200px] mt-[50px]">
+      <div className=" my-[50px]">
         <select 
           onChange={handleChange} 
           value={selectedVariant} 
-          className="p-2 w-[200px] text-center"
+          className="p-2 w-[200px] text-center border border-black"
         >
           {showCreateOption && <option value="create">Criar</option>}
           {variants.map((variant: any) => (

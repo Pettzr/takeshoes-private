@@ -33,7 +33,7 @@ export default function Products({ pagination, products, onPageChange, totalProd
   };
 
   return (
-    <div className='w-full '>
+    <div className='w-full'>
       {products.length > 0 ? (
         <>
           {pagination && <div className="flex mb-[30px] h-[30px] justify-center text-lg ">
@@ -98,8 +98,8 @@ export default function Products({ pagination, products, onPageChange, totalProd
               );
             })}
           </div>
-          {pagination && <div className='flex w-full justify-center'>
-            <div className="flex mt-[30px] text-lg h-[30px] mt-[300px]">
+          {pagination && <div className='flex w-full justify-center mt-[300px]'>
+            <div className="flex mt-[30px] text-lg h-[30px] ">
               <button onClick={handlePreviousPage} disabled={currentPage === 1} className="flex w-auto p-4 text-white items-center bg-black rounded-l">
               Voltar
               </button>

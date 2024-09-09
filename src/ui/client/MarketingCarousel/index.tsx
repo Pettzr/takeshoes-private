@@ -42,7 +42,7 @@ const MarketingCarousel: NextPage = () => {
   };
 
   return (
-    <div className='flex w-screen justify-center mt-20'>
+    <div className='flex w-screen justify-center'>
       <div className='flex flex-col w-3/4'>
         <SlickCarousel images={images} settings={marketingCarouselSettings}/>
       </div>
