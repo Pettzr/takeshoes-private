@@ -21,7 +21,7 @@ export function HomeSkeleton() {
                 <CarouselSkeleton />
                 <NewsSkeleton />
                 <div className="flex flex-col w-full min-h-screen">
-                    <ExplorarSkeleton />
+                    <HomeProductsSkeleton />
                 </div>
             </div>
         </div>
@@ -31,7 +31,7 @@ export function HomeSkeleton() {
 export function CarouselSkeleton () {
     return (
         <div className='flex w-full justify-center mt-20 '>
-            <Slider {...settings} className='w-[900px] h-[400px] rounded-lg bg-black/10 skeleton'>
+            <Slider {...settings} className='w-3/4 min-h-[600px] rounded-lg bg-black/10 skeleton'>
                 <></>
                 <></>
                 <></>
@@ -44,15 +44,15 @@ export function CarouselSkeleton () {
 export function NewsSkeleton () {
     return (
         <div className="flex justify-center overflow-x-auto my-[250px]">
-            <div className="w-[250px] ml-8 overflow-y-hidden h-[350px] bg-black/40 skeleton"></div>
-            <div className="w-[250px] ml-8 overflow-y-hidden h-[350px] bg-black/40 skeleton"></div>
-            <div className="w-[250px] ml-8 overflow-y-hidden h-[350px] bg-black/40 skeleton"></div>
-            <div className="w-[250px] ml-8 overflow-y-hidden h-[350px] bg-black/40 skeleton"></div>
+            <div className="w-[350px] ml-8 overflow-y-hidden h-[350px] bg-black/40 skeleton"></div>
+            <div className="w-[350px] ml-8 overflow-y-hidden h-[350px] bg-black/40 skeleton"></div>
+            <div className="w-[350px] ml-8 overflow-y-hidden h-[350px] bg-black/40 skeleton"></div>
+            <div className="w-[350px] ml-8 overflow-y-hidden h-[350px] bg-black/40 skeleton"></div>
         </div>
     )
 }
 
-export function ExplorarSkeleton () {
+export function HomeProductsSkeleton () {
     const products = Array(12).fill('');
     return(
         <div className="min-h-screen skeleton ">
@@ -64,7 +64,7 @@ export function ExplorarSkeleton () {
                     {products.map((product: any) => (
                     <div key={product.name} className='flex flex-col items-center basis-1/6 mr-auto'>
                         <h1 className='w-full text-black text-center'>{product.name}</h1>
-                        <div className='w-[200px] h-[300px] bg-black/40' />
+                        <div className='max-h-[300px] min-h-[300px] min-w-[400px] max-w-[400px] bg-black/40' />
                     </div>
                     ))}
                 </div>
