@@ -117,7 +117,8 @@ export default function Page() {
           }
   
           queryClient.invalidateQueries({ queryKey: ['cart-icon'] });
-  
+          queryClient.invalidateQueries({ queryKey: ['cart-products'] });
+
       } catch (error) {
           console.error('Erro inesperado', error);
       }
@@ -140,16 +141,30 @@ export default function Page() {
                   <Link className="flex items-center justify-center bg-black rounded p-2 text-white h-[30px] w-[200px] " href={'/cadastrar'}>Registrar-se</Link>
                 </div>
               </div>
-            ) : (
+            ) : products.length > 0 ? (
               <div className="flex flex-col p-12">
                   <CartProducts products={products} changeQuantity={handleChangeQuantity} deleteItem={handleDelete} />
                 <div className="w-full flex flex-col justify-center items-center mt-[100px]">
-                  <hr className="w-screen bg-black h-[2px]"/>
-                  <h1 className="mt-[40px]"> Preço total: {totalPrice.toFixed(2).replace('.', ',')}</h1>
-                  <button className="w-[300px] h-[50px] rounded bg-black text-white" onClick={handleBuy}>Realizar Compra</button>
+                  <hr className="w-screen bg-black h-[2px]" />
+                  <h1 className="mt-[40px]">
+                    Preço total: {totalPrice.toFixed(2).replace(".", ",")}
+                  </h1>
+                  <button
+                    className="w-[300px] h-[50px] rounded bg-black text-white"
+                    onClick={handleBuy}
+                  >
+                    Realizar Compra
+                  </button>
                 </div>
               </div>
+            ) : (
+              <div className="w-full h-full flex justify-center items-center">
+              <TiShoppingCart className="text-[200px]" />
+              <div className="flex flex-col gap-[20px]">
+                <h1 className="text-center text-lg">Seu carrinho está vazio.</h1>
+              </div>
+            </div>
             )}
-      </div>
-    );
+          </div>
+        );
 }

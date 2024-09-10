@@ -77,6 +77,7 @@ model PurchaseHistory {
   status      String          @default("processando pedido")
   user        User            @relation(fields: [userId], references: [id])
   userId      Int
+  createdAt   DateTime        @default(now())
 
   @@unique([userId, id])
 }
@@ -92,6 +93,7 @@ model Purchase {
   size                Size            @relation(fields: [sizeId], references: [id])
   sizeId              Int
   quantity            Int             @default(1)
+
 }
 
 model VerificationToken{ 

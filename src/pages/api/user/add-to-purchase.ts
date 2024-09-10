@@ -55,6 +55,12 @@ export default async function handler (req: NextApiRequest, res: NextApiResponse
                 userId: foundUser.id,
               },
             });
+
+            await prisma.cart.deleteMany({
+              where: {
+                userId: foundUser.id
+              }
+            })
       
             return res.status(200).json({ message: `Pedido de compra feito com sucesso para o usuário ${user}` });
           } catch (error) {
