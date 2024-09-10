@@ -1,7 +1,7 @@
 "use client";
 
 import CartProducts from "@/src/ui/client/CartProducts";
-import { CartSkeletonLogout, ExplorarSkeleton } from "@/src/ui/components/Skeletons";
+import { CartSkeletonLogout, HomeProductsSkeleton } from "@/src/ui/components/Skeletons";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
@@ -11,8 +11,6 @@ import { toast } from "react-toastify";
 
 export default function Page() {
   const [ products, setProducts ] = useState<any[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
   const session = useSession();
   const queryClient = useQueryClient();
 
@@ -32,12 +30,11 @@ export default function Page() {
     }
   }, [data])
 
-  console.log(products)
   
   if ( session.status === 'authenticated') {
-    if (isPending) return <ExplorarSkeleton/>;    
+    if (isPending) return <HomeProductsSkeleton/>;    
     if (error) return 'An error has ocurred' + error.message;
-    if (!data) return <ExplorarSkeleton/>;
+    if (!data) return <HomeProductsSkeleton/>;
   } else {
     if (isPending) return <CartSkeletonLogout/>; 
   }
@@ -107,6 +104,7 @@ export default function Page() {
       }
     }
 
+
     const handleBuy = async () => {
         try {
           toast.loading('Processando...')
@@ -141,10 +139,6 @@ export default function Page() {
       return product.variant.price * product.quantity
     }).reduce((acc: any, curr: any) => acc + curr, 0)
 
-    const indexOfLastItem = currentPage * itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentProducts = products.slice(indexOfFirstItem, indexOfLastItem);
-
 
     return (
       <div className="flex flex-col min-h-screen w-full">
@@ -154,17 +148,13 @@ export default function Page() {
                 <TiShoppingCart className="text-[200px]" />
                 <div className="flex flex-col gap-[20px]">
                   <h1 className="text-center text-lg">Seu carrinho está vazio.</h1>
-                  <Link className="flex items-center justify-center bg-black rounded p-2 text-white h-[30px] w-[200px] " href={'/login'}>Faça Login</Link>
-                  <Link className="flex items-center justify-center bg-black rounded p-2 text-white h-[30px] w-[200px] " href={'/register-user'}>Registrar-se</Link>
+                  <Link className="flex items-center justify-center bg-black rounded p-2 text-white h-[30px] w-[200px] " href={'/entrar'}>Faça Login</Link>
+                  <Link className="flex items-center justify-center bg-black rounded p-2 text-white h-[30px] w-[200px] " href={'/cadastrar'}>Registrar-se</Link>
                 </div>
               </div>
             ) : products.length > 0 ? (
               <div className="flex flex-col p-12">
-                <CartProducts
-                  products={currentProducts}
-                  changeQuantity={handleChangeQuantity}
-                  deleteItem={handleDelete}
-                />
+                  <CartProducts products={products} changeQuantity={handleChangeQuantity} deleteItem={handleDelete} />
                 <div className="w-full flex flex-col justify-center items-center mt-[100px]">
                   <hr className="w-screen bg-black h-[2px]" />
                   <h1 className="mt-[40px]">
