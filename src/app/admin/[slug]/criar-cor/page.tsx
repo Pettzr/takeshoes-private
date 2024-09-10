@@ -5,6 +5,7 @@ import { useProduct } from '@/src/context/ProductContext';
 import { useEffect } from 'react';
 import AddColor from "@/src/ui/admin/ColorMenu";
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { toast } from "react-toastify";
 
 export default function CreateColorPage() {
   const { slug } = useParams() as { slug: string };
@@ -34,8 +35,7 @@ export default function CreateColorPage() {
       return response.json();
     },
     onSuccess: () => {
-      alert('Cor adicionada com sucesso');
-      // Invalida a query específica usando a chave correta
+      toast.success('Cor adicionada com sucesso');
       queryClient.invalidateQueries({ queryKey: ['productBySlug', slug] });
     },
     onError: (error: any) => {

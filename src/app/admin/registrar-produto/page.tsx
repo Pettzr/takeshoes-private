@@ -1,6 +1,7 @@
 "use client"
 import NavAdmin from "@/src/ui/admin/NavAdmin";
 import ProductForm from "@/src/ui/admin/ProductForm";
+import { toast } from "react-toastify";
 
 export default function Page() {
   const handleProductSubmit = async (productData: any) => {
@@ -16,7 +17,7 @@ export default function Page() {
       if (response.ok) {
         const data = await response.json();
         console.log('Produto criado com sucesso:', data);
-        alert('Produto criado com sucesso');
+        toast.success('Produto criado com sucesso');
       } else {
         console.error('Erro ao criar o produto:', await response.text());
       }

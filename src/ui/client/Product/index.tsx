@@ -5,6 +5,8 @@ import SelectedSizes from "@/src/ui/client/SelectedSizes";
 import { IoCart } from "react-icons/io5";
 import { useSession } from "next-auth/react";
 import { useQueryClient } from '@tanstack/react-query';
+import { toast } from "react-toastify";
+
 
 export default function Product({ data }: any) {
     const [selectedVariant, setSelectedVariant] = useState<string>("");
@@ -33,8 +35,10 @@ export default function Product({ data }: any) {
     const handleQuantitySelect = (quantity: number) => setSelectedQuantity(quantity);
 
     const handleAddToCart = async () => {
+
         if(selectedSize && selectedQuantity !== 0 && session.status === 'authenticated') {
             try {
+                toast.loading('Processando...')
                 const response = await fetch('/api/user/add-to-cart',{
                     method: 'POST',
                     headers: {
@@ -44,22 +48,22 @@ export default function Product({ data }: any) {
                 })
         
                 const dataResponse = await response.json()
-                
-        
+                toast.dismiss()
                 if (response.ok) {
-                    alert('Produto inserido no carrinho com sucesso!');
+                    toast.success('Produto inserido no carrinho.')
                 } else {
                     console.error('Erro ao inserir o produto no carrinho:', dataResponse);
-                    alert('Erro ao inserir produto no carrinho: ' + dataResponse.error);
+                    toast.error('Erro ao inserir produto no carrinho.')
                 }
 
                 queryClient.invalidateQueries({ queryKey: ['cart-icon'] });
 
             } catch (error) {
                 console.error('Erro inesperado', error);
+                toast.error('Erro ao inserir produto no carrinho.')
             }
         } else {
-            selectedQuantity === 0 ? alert('Insira a quantidade desejada do produto') : session.status === 'authenticated' ? alert('Escolha um tamanho') : alert('Faça login')
+            selectedQuantity === 0 ? toast.error('Insira a quantidade desejada do produto') : session.status === 'authenticated' ? toast.error('Escolha um tamanho') : toast.error('Faça login')
         }
     }
 

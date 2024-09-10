@@ -7,6 +7,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { TiShoppingCart } from "react-icons/ti";
+import { toast } from "react-toastify";
 
 export default function Page() {
   const [ products, setProducts ] = useState<any[]>([]);
@@ -53,17 +54,25 @@ export default function Page() {
   setProducts(updatedProducts)
 
     try {
-        await fetch('/api/user/remove-item-cart', {
+        toast.loading('Processando...')
+        const response = await fetch('/api/user/remove-item-cart', {
           method: 'DELETE',
           headers: {
               'Content-Type': 'application/json'
           },
           body: JSON.stringify({itemId: itemId}),
       });
+
+      if(response.ok) {
+        toast.dismiss()
+        toast.success('Item removido do carrinho.')
+      }
       
       queryClient.invalidateQueries({queryKey: ["cart-products"]});
       queryClient.invalidateQueries({ queryKey: ['cart-icon'] });
       } catch (error) {
+          toast.dismiss()
+          toast.error('Erro ao inserir produto no carrinho.')
           console.error('Erro inespereado', error);
           setProducts(previousProducts);
       }
@@ -100,6 +109,7 @@ export default function Page() {
 
     const handleBuy = async () => {
         try {
+          toast.loading('Processando...')
           const response = await fetch('/api/user/add-to-purchase',{
               method: 'POST',
               headers: {
@@ -110,12 +120,12 @@ export default function Page() {
   
           const dataResponse = await response.json()
           
-  
+          toast.dismiss()
           if (response.ok) {
-              alert('Pedido feito com sucesso!');
+              toast.success('Pedido feito com sucesso!');
           } else {
               console.error('Erro ao fazer pedido:', dataResponse);
-              alert('Erro ao fazer pedido: ' + dataResponse.error);
+              toast.error('Erro ao fazer pedido: ' + dataResponse.error);
           }
   
           queryClient.invalidateQueries({ queryKey: ['cart-icon'] });
@@ -123,6 +133,7 @@ export default function Page() {
 
       } catch (error) {
           console.error('Erro inesperado', error);
+          toast.error('Erro ao fazer pedido');
       }
     }
 

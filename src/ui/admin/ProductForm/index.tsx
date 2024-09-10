@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Cloudinary from "@/src/ui/components/Cloudinary";
 import SizeInput from "@/src/ui/admin/SizeInput";
 import { FaPlus } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 interface ProductFormProps {
   onSubmit: (data: any) => void;
@@ -44,18 +45,18 @@ const ProductForm: React.FC<ProductFormProps> = ({
 
   const validateForm = () => {
     if (!productColor.trim() || images.length === 0 || (showProductName && !productName.trim())) {
-      alert('Por favor preencha todos os campos!');
+      toast.error('Por favor preencha todos os campos!');
       return false;
     }
     
     if (Object.keys(sizes).length === 0) {
-      alert('Por favor adicione pelo menos um tamanho!');
+      toast.error('Por favor adicione pelo menos um tamanho!');
       return false;
     }
 
     for (const [size, data] of Object.entries(sizes)) {
       if (data.price <= 0) {
-        alert(`O preço do tamanho ${size} deve ser maior que 0!`);
+        toast.error(`O preço do tamanho ${size} deve ser maior que 0!`);
         return false;
       }
     }

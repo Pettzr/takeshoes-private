@@ -59,7 +59,7 @@ export default function TableAdmin({ data, onPageChange, totalProducts, itemsPer
                 </div>
             ))}
         </div>
-        <div className="flex justify-center items-center mt-[50px]">
+        <div className="flex justify-center items-center my-[50px]">
             <button onClick={handlePreviousPage} disabled={currentPage === 1} className="px-4 py-2 text-white bg-gray-800 rounded-l">
                 Anterior
             </button>

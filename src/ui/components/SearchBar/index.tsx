@@ -37,7 +37,7 @@ export default function SearchBar({ onSearch }: {onSearch: (results: any[]) => v
     }
 
     return (
-        <form method="POST"  onSubmit={onSubmit} className="flex flex-col w-full items-center">
+        <form method="POST"  onSubmit={onSubmit} className="flex flex-col w-full items-center mb-[30px]">
             <h1 className="text-3xl text-center w-full mt-[100px] font-bold">Dê uma olhada em nossos produtos!</h1>
             <div className="flex relative w-full items-center justify-center"> 
                 <input 

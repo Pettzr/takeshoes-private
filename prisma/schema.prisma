@@ -58,7 +58,7 @@ model User {
 
 model Cart {
   id         Int             @id @default(autoincrement())
-  user       User            @relation(fields: [userId], references: [id])
+  user       User            @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId     Int
   product    Product         @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId  Int
@@ -75,7 +75,7 @@ model PurchaseHistory {
   id          Int             @id @default(autoincrement())
   purchaseIds Int[]
   status      String          @default("processando pedido")
-  user        User            @relation(fields: [userId], references: [id])
+  user        User            @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId      Int
   createdAt   DateTime        @default(now())
 
@@ -84,7 +84,7 @@ model PurchaseHistory {
 
 model Purchase {
   id                  Int             @id @default(autoincrement())
-  user                User            @relation(fields: [userId], references: [id])
+  user                User            @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId              Int
   product             Product         @relation(fields: [productId], references: [id])
   productId           Int
