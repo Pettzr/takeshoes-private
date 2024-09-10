@@ -9,27 +9,30 @@ import Footer from '../ui/components/Footer';
 import { ProductProvider } from '../context/ProductContext';
 import ScrollToTop from '../utils/scrollToTop';
 import CartIcon from '../ui/components/CartIcon';
+import { ToastifyProvider } from '../utils/ToastifyProvider';
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <ReactQueryProvider>
       <SessionClientProvider>
         <ProductProvider>
-      <html lang="en">
-        <head>
-          <title>TakeShoes</title>
-        </head>
-        <body className='overflow-x-hidden'>
-          <ScrollToTop />
-          <Header />
-          <NavBar />
-          <CartIcon />
-          <main className='flex min-h-screen w-screen' >
-          {children}
-          </main>
-          <Footer />
-        </body>
-      </html>
+            <html lang="en">
+              <head>
+                <title>TakeShoes</title>
+              </head>
+              <body className='overflow-x-hidden'>
+                <ToastifyProvider/>
+                <ScrollToTop />
+                <Header />
+                <NavBar />
+                <CartIcon />
+                <main className='flex min-h-screen w-screen' >
+                {children}
+                </main>
+                <Footer />
+              </body>
+            </html>
         </ProductProvider>
       </SessionClientProvider>
     </ReactQueryProvider>

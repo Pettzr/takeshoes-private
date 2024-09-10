@@ -49,6 +49,8 @@ export default function PurchaseHistory() {
     }
   }, [data]);
 
+  console.log(data)
+
   if (isPending) return <h1>Loading...</h1>;
   if (error) return "An error has occurred: " + error.message;
   if (!data) return <h1>Data not found</h1>;
