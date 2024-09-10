@@ -20,9 +20,6 @@ export default function ProductColorPage() {
   if (error) return <div>Error loading product data</div>;
   if (!product) return <div>No product data found</div>;
   
-
-  
-  
   return (
     <div className='w-full'>
       <div className='flex flex-col w-full items-center'>

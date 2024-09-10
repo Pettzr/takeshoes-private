@@ -43,10 +43,10 @@ export default function News() {
             <div className='w-full flex flex-col items-center'>
                 <h1 className='w-full text-center text-black mb-[70px] text-4xl font-bold'>Últimas Novidades</h1>
                 {loading ? <NewsSkeleton/> :
-                <div className='flex overflow-x-auto gap-8 border w-75/100 justify-around overflow-y-hidden h-[400px]'>
+                <div className='flex overflow-x-auto gap-8 border-y border-black w-75/100 justify-around overflow-y-hidden h-[400px]'>
                     {images.map((item, index) => (
                         <div key={index} className='flex flex-col '>
-                            <Link href={`/${item.slug}`} className='flex flex-col overflow-y-hidden items-center justify-center min-h-[400px]'>
+                            <Link href={`/products/${item.slug}`} className='flex flex-col overflow-y-hidden items-center gap-4 justify-center min-h-[400px]'>
                                 <h2 className='text-black text-center text-xl font-bold'>{item.name}</h2>
                                 <Image
                                  src={item.image[0]} 

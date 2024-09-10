@@ -10,7 +10,7 @@ export default function ActionButtons({
   handleDeleteVariant,
 }: ActionButtonsProps) {
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-4 mb-[100px]">
       <button
         className="bg-black text-white p-2 rounded w-[150px]"
         onClick={handleSaveImages}

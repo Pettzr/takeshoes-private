@@ -19,7 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 return res.status(400).json({ message: 'Requisitos de Senha não preenchidos' });
             }    
                   
-            const verificationUrl = `/create-user-verified?token=${token}&email=${email}`
+            const verificationUrl = `${process.env.SITE_URL}/usuario/usuario-verificado?token=${token}&email=${email}`
 
             password = await hashContent(password)
             token = await hashContent(token)
@@ -43,7 +43,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             })
 
             await transporter.sendMail({
-                from: 'sevenoutfit2024@gmail.com',
+                from: 'petersong2003@gmail.com',
                 to: email,
                 subject: 'Verify your email.',
                 text: `Please click the following link to verify your email: ${verificationUrl}`,

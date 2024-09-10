@@ -41,7 +41,7 @@ export default function Page() {
     return (
       <div className="flex flex-col w-full min-h-screen">
         <NavAdmin />
-        <SearchBar onSearch={handleSearch} />
+        <SearchBar onSearch={handleSearch} title='Produtos Registrados' />
         {isLoading ? <AdminSkeleton/> : <TableAdmin data={currentProducts} onPageChange={handlePageChange} totalProducts={products.length} itemsPerPage={itemsPerPage} currentPage={currentPage} />}
       </div>
     );

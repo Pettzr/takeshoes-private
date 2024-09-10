@@ -26,13 +26,13 @@ export default function PriceManager({price, color, slug, setPrice}: PriceManage
     <div className='flex flex-col items-center gap-[14px]'>
         <h1 className='text-3xl'>Preço</h1>
           <input
-            className="p-2 ml-[30px] text-center border-2"
+            className="p-2 text-center border-2"
             type="number"
             value={price}
             onChange={(e: any) => setPrice(parseFloat(parseFloat(e.target.value).toFixed(2).replace('.', ',')))}
           />
           <button
-            className="bg-black text-white p-1 ml-[30px] w-[100px] rounded-lg"
+            className="bg-black text-white p-1 w-[100px] rounded-lg"
             onClick={() => handleInputSave(price)}
           >
             Salvar

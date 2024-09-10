@@ -74,10 +74,10 @@ export default function SelectedSizes({ selectedColor, variant = [], handleSizeS
     }, [selectedColor, variant ]);
 
     return (
-        <div className="flex mt-[100px] w-full">
-            <div>
-                <label className="flex border-black border  p-4 bg-white items-center text-md rounded"> Selecione o tamanho:
-                    <select onChange={handleChange} value={selectedSizeId} className="ml-[30px] border-black border text-center">
+        <div className="flex flex-col mt-[100px] w-full items-center">
+                <div className="w-[300px]">
+                <label className="flex border-black border p-4 bg-white items-center text-md rounded"> Selecione o tamanho:
+                    <select onChange={handleChange} value={selectedSizeId} className="ml-auto border-black border text-center w-[50px]">
                         {sizes.map((size: Size) => (
                             <option key={size.id} value={size.id}>
                                 {size.size}
@@ -85,30 +85,30 @@ export default function SelectedSizes({ selectedColor, variant = [], handleSizeS
                         ))}
                     </select>
                 </label>
-            </div>
-            <div className="ml-[40px] p-4 bg-white rounded border-black border">
-                <div className="flex text-center items-center">
-                    <h4 className="text-md mr-[10px]">Quantidade:</h4>
-                    <select onChange={handleQuantityChange} value={quantityValue} className="border-black border-2 w-[50px]">
-                        <option value={0}>{0}</option>
-                        {[...Array(availableQuantity)].map((_, index) => (
-                            <option key={index + 1} value={index + 1}>
-                                {index + 1}
-                            </option>
-                        ))}
-                    </select>
                 </div>
-                {availableQuantity === 0 && selectedSize && (
-                    <h2>Estoque indisponível</h2>
-                )}
-            </div>
-            <div className="flex p-4 text-center items-center bg-white ml-auto mr-1/10 w-[200px] rounded border-black border">
+                <div className="w-[300px]">
+                        <label className="flex border-black border p-4 bg-white items-center text-md rounded">Quantidade:
+                        <select onChange={handleQuantityChange} value={quantityValue} className="ml-auto border-black border text-center w-[50px]">
+                            <option value={0}>{0}</option>
+                            {[...Array(availableQuantity)].map((_, index) => (
+                                <option key={index + 1} value={index + 1}>
+                                    {index + 1}
+                                </option>
+                            ))}
+                        </select>
+                        </label>
+                    {availableQuantity === 0 && selectedSize && (
+                        <h2>Estoque indisponível</h2>
+                    )}
+                </div>
+                <div className="flex w-[300px]  border-black border p-4 bg-white items-center text-md rounded">
                 {selectedPrice !== null ? (
-                    <h1 className="w-full mr-[10px] text-xl">R$ {selectedPrice * quantityValue}</h1>
+                    <h1 className="text-3xl text-center w-full font-bold">R$ {selectedPrice * quantityValue}</h1>
                 ) : (
                     <h1 className="">Selecione um tamanho para ver o preço</h1>
                 )}
-            </div>
+                </div>
         </div>
+
     );
 }

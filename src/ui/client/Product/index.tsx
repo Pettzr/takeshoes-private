@@ -45,7 +45,6 @@ export default function Product({ data }: any) {
         
                 const dataResponse = await response.json()
                 
-        
                 if (response.ok) {
                     alert('Produto inserido no carrinho com sucesso!');
                 } else {
@@ -64,7 +63,7 @@ export default function Product({ data }: any) {
     }
 
     return (
-        <div className="w-3/4 mt-[50px] border-2 border-black min-h-screen p-12 rounded">
+        <div className="w-3/4 mt-[50px] border-2 min-h-screen p-12 rounded">
             <h1 className=" w-full text-center text-xl font-bold">{data.name}</h1>
             <div className="flex justify-center w-full">
                 <SelectVariant
@@ -76,8 +75,8 @@ export default function Product({ data }: any) {
             </div>
             <SelectedColor selectedColor={selectedVariant} variant={data.variant} />
             <SelectedSizes selectedColor={selectedVariant} variant={data.variant} handleSizeSelect={handleSizeSelect} handleQuantitySelect={handleQuantitySelect} />
-            <div className="flex w-full justify-end items-center mt-8">
-                <button onClick={handleAddToCart} className="h-[60px] w-[400px] bg-black text-white rounded-xl justify-end">
+            <div className="flex w-full items-center mt-[50px] justify-center">
+                <button onClick={handleAddToCart} className="h-[60px] w-[400px] bg-black text-white rounded-xl ">
                     Adicionar ao carrinho
                 </button>
                 <IoCart color="white" size={35} className="relative right-16" />

@@ -4,7 +4,6 @@ import Form from "@/src/ui/components/Form";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 
-
 function VerifiedChangePassoword () {
     const searchParams = useSearchParams();
     const router = useRouter();
@@ -16,9 +15,7 @@ function VerifiedChangePassoword () {
         { type: 'password', label: 'Confirmar a Senha', placeholder: 'Confirme sua senha', name: 'confirmPassword' }
     ]
 
-
     useEffect(() => {
-
         const register = async () => {
             try {
                 const response = await fetch(`/api/user/change-password-verified?token=${token}&email=${email}`, {
@@ -55,8 +52,6 @@ function VerifiedChangePassoword () {
         }))
     }
     
-
-
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (formData.password !== formData.confirmPassword){
@@ -87,7 +82,7 @@ function VerifiedChangePassoword () {
         }
     }
 
-    return(
+    return (
         <div className="flex flex-col w-full items-center justify-center">
             <div className="text-white flex flex-col items-center mb-[20px]">
                 <h1>Digite sua nova senha.</h1>

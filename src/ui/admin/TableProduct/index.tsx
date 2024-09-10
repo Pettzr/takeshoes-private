@@ -31,7 +31,7 @@ export default function TableAdmin({ data, onPageChange, totalProducts, itemsPer
   
 
     return (
-    <div className="flex flex-col text-white justify-center items-center">
+    <div className="flex flex-col text-white justify-center items-center mt-[50px]">
         <div className="flex flex-col border-2 w-auto gap-2 border border-black p-12 items-center">
             {data.length > 0 && 
             data.map((product: any) => (
@@ -59,7 +59,7 @@ export default function TableAdmin({ data, onPageChange, totalProducts, itemsPer
                 </div>
             ))}
         </div>
-        <div className="flex justify-center items-center mt-[50px]">
+        <div className="flex justify-center items-center my-[50px]">
             <button onClick={handlePreviousPage} disabled={currentPage === 1} className="px-4 py-2 text-white bg-gray-800 rounded-l">
                 Anterior
             </button>

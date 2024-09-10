@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query"
 import { useState } from "react";
 import { IoSearch } from "react-icons/io5";
 
-export default function SearchBar({ onSearch }: {onSearch: (results: any[]) => void}) {
+export default function SearchBar({ onSearch, title }: {onSearch: (results: any[]) => void, title: string})  {
     const [searchTerm, setSearchTerm] = useState('')
 
     const mutation = useMutation({
@@ -38,7 +38,7 @@ export default function SearchBar({ onSearch }: {onSearch: (results: any[]) => v
 
     return (
         <form method="POST"  onSubmit={onSubmit} className="flex flex-col w-full items-center">
-            <h1 className="text-3xl text-center w-full mt-[100px] font-bold">Dê uma olhada em nossos produtos!</h1>
+            <h1 className="text-3xl text-center w-full mt-[100px] font-bold">{title}</h1>
             <div className="flex relative w-full items-center justify-center"> 
                 <input 
                 className="p-2 pr-3 bg-gray border border-black/80 border-2 w-1/3 mt-[50px] text-xl rounded" 

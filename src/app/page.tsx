@@ -88,7 +88,7 @@ const handlePageChange = (page: number) => {
           <MarketingCarousel />
           <News />
           <div className="flex flex-col w-full" ref={productRef}>
-            <SearchBar onSearch={handleSearch} />
+            <SearchBar onSearch={handleSearch} title='Dê uma olhada em nossos produtos!' />
             <div className="flex flex-col justify-start ml-12/100">
               <label htmlFor="sortOrder" className="mr-2">Ordenar por:</label>
               <select id="sortOrder" value={sortOrder} onChange={handleSortChange} className=" w-1/5 border-2 border-black/80 p-2 rounded">

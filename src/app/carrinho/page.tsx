@@ -131,7 +131,7 @@ export default function Page() {
 
     return (
       <div className="flex flex-col min-h-screen w-full">
-        <h1 className="text-full text-2xl font-bold text-center mt-[100px]">Carrinho</h1>
+        <h1 className="text-full text-3xl font-bold text-center mt-[100px]">Carrinho</h1>
             {session.status !== 'authenticated' ? (
               <div className="w-full h-full flex justify-center items-center">
                 <TiShoppingCart className="text-[200px]" />
@@ -158,11 +158,12 @@ export default function Page() {
                 </div>
               </div>
             ) : (
-              <div className="w-full h-full flex justify-center items-center">
-              <TiShoppingCart className="text-[200px]" />
-              <div className="flex flex-col gap-[20px]">
-                <h1 className="text-center text-lg">Seu carrinho está vazio.</h1>
-              </div>
+              <div className="w-full h-full flex justify-center items-center flex-col ">
+                <div className="flex gap-[20px] items-center">
+                  <TiShoppingCart className="text-[200px]" />
+                  <h1 className="text-center text-2xl font-bold">Seu carrinho está vazio.</h1>
+                </div>
+                <hr className="w-1/2 bg-black h-[5px]"/>
             </div>
             )}
           </div>

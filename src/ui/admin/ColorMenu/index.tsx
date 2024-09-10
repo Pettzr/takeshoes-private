@@ -13,12 +13,12 @@ export default function AddColor({ variant, slug }: DataVariantsProps) {
             <Link 
             href={`/admin/${slug}/${variant.color}`} 
             key={variant.color} 
-            className='flex w-[100px] h-[40px] bg-black text-white ml-[50px] rounded-lg mt-[50px] justify-center items-center'>{variant.color}
+            className='flex w-[100px] h-[40px] bg-black text-white ml-[100px]  rounded-lg mt-[50px] justify-center items-center'>{variant.color}
             </Link>
             ))}
             <Link 
             href={`/admin/${slug}/criar-cor`} 
-            className=" text-white/60 mt-[50px] ml-[50px]">
+            className=" text-white/60 mt-[50px] mr-[100px] ">
                 <CiSquarePlus size={40} color="black"/>
             </Link>
         </div>

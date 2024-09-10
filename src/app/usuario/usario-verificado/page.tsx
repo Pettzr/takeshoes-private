@@ -34,7 +34,7 @@ function CreateUserVerified() {
                 if (response.ok) {
                     console.log('User created', data);
                     alert('Usuário criado com sucesso!');
-                    return router.push('/login');
+                    return router.push('/entrar');
                 } else {
                     console.error('Error creating user:', data);
                     alert('Erro ao criar usuário: ' + data.error);
@@ -53,11 +53,9 @@ function CreateUserVerified() {
 
     return(
         ( 
-        <div className="flex h-screen">
-            <div className="flex-1 flex flex-col">
-                <main className="w-full h-screen flex justify-center items-center">
+        <div className="flex min-h-screen">
+            <div className="flex flex-col">
                     <h1>Usuário cadastrado com sucesso.</h1>
-                </main>
             </div>
         </div>
         )
