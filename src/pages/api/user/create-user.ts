@@ -15,7 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
             const passwordRequirements = checkPassword(password)
 
-            if (passwordRequirements === false) {
+            if (passwordRequirements.isValid === false) {
                 return res.status(400).json({ message: 'Requisitos de Senha não preenchidos' });
             }    
                   

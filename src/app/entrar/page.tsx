@@ -4,6 +4,7 @@ import Form from "@/components/Form";
 import { useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 export default function Page() {
     const fields = [
@@ -37,7 +38,7 @@ export default function Page() {
 
         if (result?.error) {
             console.error('Erro ao fazer login: ', result.error)
-            alert(`Erro ao logar usuário: "${result.error}".`)
+            toast.error(`Erro ao logar usuário: "${result.error}".`)
         } 
     }
 
@@ -49,7 +50,7 @@ export default function Page() {
             
         if (result?.error) {
                 console.error('Erro ao fazer login: ', result.error)
-                alert(`Erro ao logar usuário: "${result.error}".`)
+                toast.error(`Erro ao logar usuário: "${result.error}".`)
             };
     }
 

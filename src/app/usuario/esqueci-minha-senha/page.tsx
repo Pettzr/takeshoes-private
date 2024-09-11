@@ -2,6 +2,7 @@
 
 import Form from "@/components/Form";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export default function Page() {
     const fields = [
@@ -18,6 +19,7 @@ export default function Page() {
         event.preventDefault();
 
         try {
+            toast.loading('Processando...')
             const response = await fetch('/api/user/change-password', {
                 method: 'POST',
                 headers: {
@@ -29,10 +31,10 @@ export default function Page() {
             const data = await response.json();
             if (response.ok) {
                 console.log('Verify your email', data);
-                alert('Verifique seu e-mail para alterar a senha!')
+                toast.success('Verifique seu e-mail para alterar a senha!')
             } else {
                 console.error('Error creating user:', data);
-                alert('Erro ao alterar a senha' + data.details)
+                toast.error('Erro ao alterar a senha' + data.details)
             }
 
         } catch (error) {

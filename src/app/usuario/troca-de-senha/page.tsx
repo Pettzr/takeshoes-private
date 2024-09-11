@@ -3,6 +3,7 @@
 import Form from "@/src/ui/components/Form";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 function VerifiedChangePassoword () {
     const searchParams = useSearchParams();
@@ -28,10 +29,10 @@ function VerifiedChangePassoword () {
                 const data = await response.json();
                 if (response.ok) {
                     console.log('Email verified', data);
-                    alert('Email verificado com sucesso!');
+                    toast.success('Email verificado com sucesso!');
                 } else {
                     console.error('Error ao verificar email:', data);
-                    alert('Error ao verificar email: ' + data.error);
+                    toast.error('Error ao verificar email: ' + data.error);
                     router.push('/');
                 }
             } catch (error) {
@@ -55,7 +56,7 @@ function VerifiedChangePassoword () {
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (formData.password !== formData.confirmPassword){
-            alert("Senhas não coincidem")
+            toast.error("Senhas não coincidem")
             return
         }
 
@@ -71,10 +72,10 @@ function VerifiedChangePassoword () {
             const data = await response.json();
             if (response.ok) {
                 console.log('Sua senha foi alterada com sucesso', data);
-                alert('Sua senha foi alterada com sucesso!')
+                toast.success('Sua senha foi alterada com sucesso!')
             } else {
                 console.error('Erro ao alterar a senha:', data);
-                alert('Erro ao alterar a senha' + data.details)
+                toast.error('Erro ao alterar a senha' + data.details)
             }
 
         } catch (error) {

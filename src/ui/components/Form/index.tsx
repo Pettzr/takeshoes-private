@@ -18,7 +18,7 @@ export default function Form ({fields, onSubmit, onChange, forgotPassword}: Fiel
 
 
     return(
-        <form className="w-[900px] flex flex-col gap-2 p-4 rounded items-center rounded gap-12" onSubmit={onSubmit}>
+        <form className="w-[900px] flex flex-col p-4 rounded items-center rounded gap-12" onSubmit={onSubmit}>
             {fields.map((field, index) => (
                 <div key={index} className="flex flex-col items-center w-full">
                     <h2 className="text-start w-2/3 mb-[30px] text-white text-xl">{field.label}</h2>

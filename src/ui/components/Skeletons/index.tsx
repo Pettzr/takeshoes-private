@@ -1,5 +1,6 @@
 'use client';
 
+import { TbShoppingBag, TbShoppingBagExclamation } from "react-icons/tb";
 import { TiShoppingCart } from "react-icons/ti";
 import Slider from "react-slick";
 
@@ -107,6 +108,18 @@ export function ProductSkeleton () {
     <div className="w-[1000px] h-[700px] mt-[200px] border-2 border-white">
         <div className="relative left-48 ">
          <div className="ml-[200px] mt-[50px]"></div>
+        </div>
+    </div>
+    )
+}
+
+export function PurchaseHistorySkeleton () {
+
+    return(
+    <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col skeleton items-center justify-center">
+            <TbShoppingBag className=' text-center' size={300}/>
+        
         </div>
     </div>
     )

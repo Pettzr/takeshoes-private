@@ -3,6 +3,7 @@
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect } from "react";
+import { toast } from "react-toastify";
 
 
 function CreateUserVerified() {
@@ -33,11 +34,11 @@ function CreateUserVerified() {
 
                 if (response.ok) {
                     console.log('User created', data);
-                    alert('Usuário criado com sucesso!');
+                    toast.success('Usuário criado com sucesso!');
                     return router.push('/entrar');
                 } else {
                     console.error('Error creating user:', data);
-                    alert('Erro ao criar usuário: ' + data.error);
+                    toast.error('Erro ao criar usuário: ' + data.error);
                     return router.push('/');
                 }
                 

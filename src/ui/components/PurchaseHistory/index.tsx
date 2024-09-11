@@ -1,7 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
+import { TbShoppingBagExclamation } from "react-icons/tb";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { PurchaseHistorySkeleton } from "../Skeletons";
 
 export default function PurchaseHistory() {
   const [products, setProducts] = useState<any[]>([]);
@@ -49,9 +51,9 @@ export default function PurchaseHistory() {
     }
   }, [data]);
 
-  console.log(data)
+  console.log(products.length)
 
-  if (isPending) return <h1>Loading...</h1>;
+  if (isPending) return <PurchaseHistorySkeleton/>;
   if (error) return "An error has occurred: " + error.message;
   if (!data) return <h1>Data not found</h1>;
     return(
@@ -121,7 +123,10 @@ export default function PurchaseHistory() {
           </div>
           </>
         ) : (
-          <h1 className='text-white w-full text-center'>Nenhum produto encontrado!</h1>
+          <div className="flex flex-col gap-6">
+            <TbShoppingBagExclamation className=' w-full text-center' size={150}/>
+            <h1 className=' w-full text-center text-3xl	'>Você ainda não realizou nenhum pedido!</h1>
+          </div>
         )}
       </div>
     )
