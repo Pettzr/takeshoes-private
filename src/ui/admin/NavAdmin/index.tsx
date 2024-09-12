@@ -8,11 +8,11 @@ export default function NavAdmin() {
     const pathname = usePathname();
     return (
     <nav className="flex justify-center w-full mt-[45px]">
-        <div className="flex justify-around bg-black rounded-lg">
+        <div className="flex justify-around bg-black rounded-full">
             {links.map((link, index) => (
                 <Link key={index} href={link} className={clsx(
-                    "p-4 min-w-[150px] text-center text-white hover:bg-blue-500",
-                    links[index] === pathname? "bg-blue-500 " : "",)}>
+                    "p-4 min-w-[150px] text-center text-white hover:bg-blue-500 hover:rounded-full",
+                    links[index] === pathname? "bg-blue-500 rounded-full" : "",)}>
                     <h1>{pages[index]}</h1>
                 </Link>
             ))}

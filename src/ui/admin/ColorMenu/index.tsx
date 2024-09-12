@@ -1,11 +1,6 @@
 import Link from "next/link";
 import { CiSquarePlus } from "react-icons/ci";
 
-type DataVariantsProps = {
-    variant?: Variant[];
-    slug?: string;
-}
-
 export default function AddColor({ variant, slug }: DataVariantsProps) {
     return (
         <div className="flex row gap-4 mb-[100px] w-full justify-start flex-wrap">

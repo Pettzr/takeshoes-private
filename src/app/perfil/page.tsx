@@ -1,6 +1,6 @@
 'use client'
 
-import PurchaseHistory from "@/src/ui/components/PurchaseHistory";
+import PurchaseHistory from "@/src/ui/client/PurchaseHistory";
 import { useQueryClient } from "@tanstack/react-query";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";

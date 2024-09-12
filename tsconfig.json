@@ -22,9 +22,9 @@
       "@/components/*": ["./src/ui/components/*"],
       "@/admin-components/*": ["./src/ui/admin/*"],
       "@/app/lib/*": ["./src/lib/*"],
-      "@types": ["./src/types/*"]
+      "@interfaces": ["./src/interfaces/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/lib/actions", "src/pages/api/products/variants", "prisma/**/*.ts", "src/ui/components/Skeletons/marketing-carousel-skeleton", "src/ui/components/ImageManager"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/lib/actions", "src/pages/api/products/variants", "prisma/**/*.ts", "src/ui/components/Skeletons/marketing-carousel-skeleton", "src/ui/admin/ImageManager"],
   "exclude": ["node_modules"]
 }

@@ -27,7 +27,7 @@ export default function PasswordValidation (formdata: any) {
                 <h1>Validação de senha:</h1>
                 <ul>
                     {validations.map((validation) => (
-                        <li>
+                        <li key={validation}>
                             {passwordValidated.errors.includes(validation) ? '🔴' : '🟢'}
                             {validation}
                         </li>

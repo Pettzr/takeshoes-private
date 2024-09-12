@@ -1,28 +1,19 @@
 import { useState } from "react";
 import { FaPlus, FaTrash } from "react-icons/fa";
 
-type Size = string; 
-type SizeData = { quantity: number};
-type Sizes = Record<Size, SizeData>;
-
-type SizeInputProps = {
-  sizes: Sizes;
-  onSizeChange: (size: Size, field: keyof SizeData, value: number) => void;
-};
-
 export default function SizeInput({ sizes, onSizeChange }: SizeInputProps) {
-  const [sizeKeys, setSizeKeys] = useState<Size[]>([]);
+  const [sizeKeys, setSizeKeys] = useState<string[]>([]);
   const [newSize, setNewSize] = useState<string>('');
 
   const handleAddSize = () => {
     if (newSize && !sizeKeys.includes(newSize)) {
       setSizeKeys((prevKeys) => [...prevKeys, newSize]);
       onSizeChange(newSize, 'quantity', 0);
-      setNewSize(''); // Limpa o campo após adicionar o tamanho
+      setNewSize(''); 
     }
   };
 
-  const handleDeleteSize = (size: Size) => {
+  const handleDeleteSize = (size: string) => {
     setSizeKeys((prevKeys) => prevKeys.filter((key) => key !== size));
   };
 
@@ -34,7 +25,7 @@ export default function SizeInput({ sizes, onSizeChange }: SizeInputProps) {
           <div className="flex flex-col gap-4">
             <h1 className="text-black text-center mt-[10px]">{size}</h1>
             <div className="flex border-2 w-[400px] p-2 justify-center items-center">
-              <label className="text-white w-[100px] mr-[5px]">Quantidade: </label>
+              <label className="w-[100px] mr-[5px]">Quantidade: </label>
               <input
                 placeholder="0"
                 className="p-1 w-[50px] border-2"

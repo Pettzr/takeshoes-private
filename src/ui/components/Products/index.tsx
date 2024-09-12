@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-type productProps = {
+interface productProps {
   products?: any,
   onPageChange?: any,
   totalProducts?: any, 
@@ -48,7 +48,7 @@ export default function Products({ pagination, products, onPageChange, totalProd
               </button>
           </div>}
           <div 
-            className="flex gap-10/100 gap-y-[400px] w-76/100 mx-12/100 justify-start p-8 flex-wrap space-t-72"
+            className="flex gap-10/100 gap-y-[200px] w-76/100 mx-12/100 justify-start p-8 flex-wrap "
           >
             {products.map((product: any) => {
               const options = quantityOptions(product.size?.quantity || 0);
@@ -57,7 +57,7 @@ export default function Products({ pagination, products, onPageChange, totalProd
                   key={product.product ? product.product.name : product.name}
                   className="flex flex-col items-center basis-76/100 max-w-26.6/100 border-black p-4" 
                 >
-                  <Link href={`/products/${product.product ? product.product.slug : product.slug}`} className='max-h-[300px] min-h-[300px] min-w-[400px] max-w-[400px]'>
+                  <Link href={`/products/${product.product ? product.product.slug : product.slug}`} className='h-auto p-4 min-w-[400px] max-w-[400px] bg-[#EAEEEF]'>
                     <h1 className="w-full text-black text-center text-2xl font-bold mb-[20px]">{product.name}</h1>
                     <Image
                       src={
@@ -98,7 +98,7 @@ export default function Products({ pagination, products, onPageChange, totalProd
               );
             })}
           </div>
-          {pagination && <div className='flex w-full justify-center mt-[300px]'>
+          {pagination && <div className='flex w-full justify-center mt-[100px]'>
             <div className="flex mt-[30px] text-lg h-[30px] ">
               <button onClick={handlePreviousPage} disabled={currentPage === 1} className="flex w-auto p-4 text-white items-center bg-gray-800  rounded-l">
               Voltar

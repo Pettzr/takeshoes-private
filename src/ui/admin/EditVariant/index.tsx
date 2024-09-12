@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import { CloudinaryUploadWidgetResults } from 'next-cloudinary';
 import { useRouter } from 'next/navigation';
-import SizeManager from '@/components/SizeManager';
-import ImageManager from '@/src/ui/components/ImageManager';
+import SizeManager from '@/src/ui/admin/SizeManager';
+import ImageManager from '@/src/ui/admin/ImageManager';
 import ActionButtons from '@/components/ActionsButtons';
-import PriceManager from '@/components/PriceManager';
+import PriceManager from '@/src/ui/admin/PriceManager';
 
 export default function EditVariant({ slug, color, variant }: SelectedVariant) {
   const [price, setPrice] = useState<any>()

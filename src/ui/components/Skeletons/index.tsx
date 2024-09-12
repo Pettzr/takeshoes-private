@@ -1,6 +1,6 @@
 'use client';
 
-import { TbShoppingBag, TbShoppingBagExclamation } from "react-icons/tb";
+import { TbShoppingBag } from "react-icons/tb";
 import { TiShoppingCart } from "react-icons/ti";
 import Slider from "react-slick";
 

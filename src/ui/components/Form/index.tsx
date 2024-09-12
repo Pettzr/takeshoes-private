@@ -1,13 +1,13 @@
 import Link from "next/link";
 
-type Field = {
+interface Field {
     type: string;
     label: string;
     placeholder: string;
     name: string;
 }
 
-type FieldsProps = {
+interface FieldsProps {
     fields: Field[];
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
