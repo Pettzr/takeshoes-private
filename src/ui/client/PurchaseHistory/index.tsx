@@ -3,7 +3,7 @@ import { TbShoppingBagExclamation } from "react-icons/tb";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { PurchaseHistorySkeleton } from "../Skeletons";
+import { PurchaseHistorySkeleton } from "../../components/Skeletons";
 
 export default function PurchaseHistory() {
   const [products, setProducts] = useState<any[]>([]);

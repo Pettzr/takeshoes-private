@@ -4,12 +4,12 @@ import { useParams } from 'next/navigation';
 import { useProduct } from '@/src/context/ProductContext';
 import { useEffect } from 'react';
 import AddColor from "@/src/ui/admin/ColorMenu";
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import {  useQueryClient } from '@tanstack/react-query';
 import { toast } from "react-toastify";
 
 export default function CreateColorPage() {
   const { slug } = useParams() as { slug: string };
-  const { product, isLoading, error, fetchProductBySlug } = useProduct();
+  const { product, fetchProductBySlug } = useProduct();
   const queryClient = useQueryClient();
 
   useEffect(() => {
@@ -18,8 +18,8 @@ export default function CreateColorPage() {
     }
   }, [slug, fetchProductBySlug]);
 
-  const mutation = useMutation({
-    mutationFn: async (colorData: any) => {
+  const handleColorSubmit = async (colorData: any) => {
+    try {
       const response = await fetch(`/api/products/variants/${slug}/create-variant`, {
         method: 'PATCH',
         headers: {
@@ -28,28 +28,20 @@ export default function CreateColorPage() {
         body: JSON.stringify(colorData),
       });
 
-      if (!response.ok) {
-        throw new Error(await response.text());
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Produto criado com sucesso:', data);
+        toast.success('Produto criado com sucesso');
+        queryClient.invalidateQueries({queryKey: ['productBySlug', slug]})
+      } else {
+        console.error('Erro ao criar o produto:', await response.text());
       }
-
-      return response.json();
-    },
-    onSuccess: () => {
-      toast.success('Cor adicionada com sucesso');
-      queryClient.invalidateQueries({ queryKey: ['productBySlug', slug] });
-    },
-    onError: (error: any) => {
-      console.error('Erro ao adicionar a cor:', error);
-    },
-  });
-
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading product data</div>;
-  if (!product) return <div>No product data found</div>;
-
-  const handleColorSubmit = (colorData: any) => {
-    mutation.mutate(colorData);
+    } catch (error) {
+      console.error('Erro de rede:', error);
+    }
   };
+
+  if(!product) return <div>Loading...</div>
 
   return (
     <div className="w-full">

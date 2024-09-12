@@ -8,7 +8,7 @@ interface SlickCarouselProps {
   settings: Settings;
 }
 
-const SlickCarousel: React.FC<SlickCarouselProps> = ({ images, settings }) => {
+export default function SlickCarousel({ images, settings }: SlickCarouselProps) {
   return (
     <Slider {...settings}>
       {images.map((image, index) => (
@@ -19,5 +19,3 @@ const SlickCarousel: React.FC<SlickCarouselProps> = ({ images, settings }) => {
     </Slider>
   );
 };
-
-export default SlickCarousel;

@@ -15,7 +15,7 @@ export default function News() {
     const [images, setImages] = useState<ImageWithName[]>([]);
     const [loading, setLoading] = useState<boolean>(true)
 
-    const {data, isLoading, error} = useQuery({
+    const {data } = useQuery({
         queryKey: ['productNews'],
         queryFn: async () => {
             try {
@@ -43,20 +43,20 @@ export default function News() {
             <div className='w-full flex flex-col items-center'>
                 <h1 className='w-full text-center text-black mb-[70px] text-4xl font-bold'>Últimas Novidades</h1>
                 {loading ? <NewsSkeleton/> :
-                <div className='flex overflow-x-auto gap-8 border-y border-black w-75/100 justify-around overflow-y-hidden h-[400px]'>
+                <div className='flex overflow-x-auto gap-8 border-black w-75/100 justify-around overflow-y-hidden h-[500px]'>
                     {images.map((item, index) => (
                         <div key={index} className='flex flex-col '>
-                            <Link href={`/products/${item.slug}`} className='flex flex-col overflow-y-hidden items-center gap-4 justify-center min-h-[400px]'>
-                                <h2 className='text-black text-center text-xl font-bold'>{item.name}</h2>
+                            <Link href={`/products/${item.slug}`} className='flex p-4 flex-col bg-[#EAEEEF] space-around gap-4 min-h-[500px]'>
+                                <h2 className='text-black text-center text-xl font-bold '>{item.name}</h2>
                                 <Image
                                  src={item.image[0]} 
                                  alt={`Notícia ${index}`}  
                                  objectFit='cr' 
                                  width={1080}
                                  height={0}
-                                 className="w-[300px] max-h-[250px] min-h-[250px]"
+                                 className="w-[300px] max-h-[250px] min-h-[250px] my-[50px]"
                                  />
-                                 <h2 className='my-[5px] text-2xl font-bold'>R${item.price.toFixed(2).replace('.', ',')}</h2>
+                                 <h2 className='my-[5px] text-2xl font-bold text-center'>R${item.price.toFixed(2).replace('.', ',')}</h2>
                             </Link>
                         </div>
                     ))}

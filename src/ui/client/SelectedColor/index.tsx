@@ -2,23 +2,13 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import clsx from "clsx";
 
-interface Variant {
-  color: string;
-  images: string[];
-}
-
-interface ImageVariantProps {
-  variant?: Variant[]; // Tornar opcional para evitar erros
-  selectedColor: string;
-}
-
-export default function SelectedColor({ variant = [], selectedColor }: ImageVariantProps) {
+export default function SelectedColor({ variants = [], selectedColor }: ImageVariantProps) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [permanentImage, setPermanentImage] = useState<string | null>(null);
 
   useEffect(() => {
-    if (variant.length > 0) {
-      const selectedVariant = variant.find(variant => variant.color === selectedColor);
+    if (variants.length > 0) {
+      const selectedVariant = variants.find(variant => variant.color === selectedColor);
       if (selectedVariant) {
         setPermanentImage(selectedVariant.images[0]);
         setSelectedImage(selectedVariant.images[0]);
@@ -27,7 +17,7 @@ export default function SelectedColor({ variant = [], selectedColor }: ImageVari
         setSelectedImage(null);
       }
     }
-  }, [selectedColor, variant]);
+  }, [selectedColor, variants]);
 
   const handleHover = (url: string) => {
     setSelectedImage(url);
@@ -42,8 +32,7 @@ export default function SelectedColor({ variant = [], selectedColor }: ImageVari
     setSelectedImage(url);
   };
 
-  // Verifica novamente se `variants` existe e não está vazio antes de usar o `find`
-  const selectedVariant = variant.length > 0 ? variant.find(variant => variant.color === selectedColor) : null;
+  const selectedVariant = variants.length > 0 ? variants.find(variant => variant.color === selectedColor) : null;
 
   return (
     <>

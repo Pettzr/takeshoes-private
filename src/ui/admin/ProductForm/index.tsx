@@ -9,11 +9,11 @@ interface ProductFormProps {
   initialProductColor?: string;
   initialProductPrice?: number;
   initialImages?: string[];
-  initialSizes?: Sizes;
+  initialSizes?: { [key: string ]: SizeState };
   showProductName?: boolean;
 }
 
-const ProductForm: React.FC<ProductFormProps> = ({
+export default function ProductForm({
   onSubmit,
   initialProductName = '',
   initialProductColor = '',
@@ -21,14 +21,14 @@ const ProductForm: React.FC<ProductFormProps> = ({
   initialImages = [],
   initialSizes = {},
   showProductName = true,
-}) => {
+}: ProductFormProps) {
   const [productName, setProductName] = useState(initialProductName);
   const [productColor, setProductColor] = useState(initialProductColor);
   const [productPrice, setProductPrice] = useState(initialProductPrice);
   const [images, setImages] = useState(initialImages);
   const [sizes, setSizes] = useState(initialSizes);
 
-  const handleSizeChange = (size: Size, field: keyof SizeData, value: number) => {
+  const handleSizeChange = (size: string, field: keyof SizeState, value: number) => {
     setSizes((prevSizes) => ({
       ...prevSizes,
       [size]: {
@@ -114,10 +114,8 @@ const ProductForm: React.FC<ProductFormProps> = ({
         
         <Cloudinary onUploadSuccess={handleImageUpload} />
         <SizeInput sizes={sizes} onSizeChange={handleSizeChange} />
-        <button type="submit" className="p-2 bg-black text-white my-[30px] rounded w-[300px]">Enviar</button>
+        <button type="submit" className="p-2 bg-black text-white my-[30px] rounded w-[300px] rounded-full">Enviar</button>
       </div>
     </form>
   );
 };
-
-export default ProductForm;

@@ -1,3 +1,3 @@
-type CloudinaryProps = {
+interface CloudinaryProps {
     onUploadSuccess: (images: string[]) => void;
   }

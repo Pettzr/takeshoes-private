@@ -29,7 +29,6 @@ export default function TableAdmin({ data, onPageChange, totalProducts, itemsPer
         queryClient.invalidateQueries({queryKey: ['products']})
     }
   
-
     return (
     <div className="flex flex-col text-white justify-center items-center mt-[50px]">
         <div className="flex flex-col border-2 w-auto gap-2 border border-black p-12 items-center">

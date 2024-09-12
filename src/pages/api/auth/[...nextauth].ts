@@ -4,7 +4,7 @@ import GoogleProvider from 'next-auth/providers/google';
 import prisma from '@/src/lib/prisma';
 import { verifyHash } from '../../../utils/userHash';
 
-type UserWithRole = {
+interface UserWithRole {
   id: string;
   email: string;
   role: string;

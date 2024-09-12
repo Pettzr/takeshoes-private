@@ -8,7 +8,6 @@ import { FaPlus } from 'react-icons/fa';
 export default function Cloudinary({ onUploadSuccess }: CloudinaryProps) {
   const [images, setImages] = useState<string[]>([]);
 
-  // Atualizando a função para aceitar o tipo correto
   const handleUploadSuccess = (result: CloudinaryUploadWidgetResults) => {
     const { info } = result;
     if (info && typeof info !== 'string' && 'secure_url' in info) {

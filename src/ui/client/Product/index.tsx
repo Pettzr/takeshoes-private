@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import SelectVariant from "@/src/ui/components/SelectVariant";
+import SelectVariant from "@/src/ui/client/SelectVariant";
 import SelectedColor from "@/src/ui/client/SelectedColor";
 import SelectedSizes from "@/src/ui/client/SelectedSizes";
 import { IoCart } from "react-icons/io5";
@@ -81,7 +81,7 @@ export default function Product({ data }: any) {
             <SelectedColor selectedColor={selectedVariant} variant={data.variant} />
             <SelectedSizes selectedColor={selectedVariant} variant={data.variant} handleSizeSelect={handleSizeSelect} handleQuantitySelect={handleQuantitySelect} />
             <div className="flex w-full items-center mt-[50px] justify-center">
-                <button onClick={handleAddToCart} className="h-[60px] w-[400px] bg-black text-white rounded-xl ">
+                <button onClick={handleAddToCart} className="h-[60px] w-[400px] bg-black text-white rounded-full ">
                     Adicionar ao carrinho
                 </button>
                 <IoCart color="white" size={35} className="relative right-16" />

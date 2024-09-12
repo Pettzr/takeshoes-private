@@ -1,10 +1,10 @@
 'use client';
 
 import { NextPage } from 'next';
-import SlickCarousel from '@/src/ui/components/SlickCarousel';
+import SlickCarousel from '@/src/ui/client/SlickCarousel';
 import { useEffect, useState } from 'react';
 
-const MarketingCarousel: NextPage = () => {
+export default function MarketingCarousel({}: NextPage) {
   const [images, setImages] = useState<string[]>([]);
 
   useEffect(() => {
@@ -49,5 +49,3 @@ const MarketingCarousel: NextPage = () => {
     </div>
   );
 };
-
-export default MarketingCarousel;

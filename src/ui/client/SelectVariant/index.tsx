@@ -1,4 +1,4 @@
-import { ProductSkeleton } from "../Skeletons";
+import { ProductSkeleton } from "../../components/Skeletons";
 
 export default function SelectVariant({ variants = [], handleSelect, showCreateOption = true, selectedVariant }: SelectVariant) {
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {

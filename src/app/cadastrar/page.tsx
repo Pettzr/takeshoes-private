@@ -1,7 +1,7 @@
 "use client";
 
 import Form from "@/components/Form";
-import PasswordValidation from "@/src/ui/components/PasswordValidation";
+import PasswordValidation from "@/src/ui/client/PasswordValidation";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";

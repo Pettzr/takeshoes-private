@@ -1,4 +1,4 @@
-type PasswordCheckResult = {
+interface PasswordCheckResult {
     isValid: boolean;
     errors: string[];
   };

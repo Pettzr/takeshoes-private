@@ -1,20 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
 
-interface Size {
-    id: string;
-    size: string;
-    variantId: string;
-    quantity: number;
-    price: number;
-}
-
-interface SelectedSizesProps {
-    selectedColor: string;
-    variant: any[];
-    handleSizeSelect: (value: string) => void;
-    handleQuantitySelect: (value: number) => void;
-}
-
 export default function SelectedSizes({ selectedColor, variant = [], handleSizeSelect, handleQuantitySelect }: SelectedSizesProps) {
     const [selectedSizeId, setSelectedSizeId] = useState<string>("");
     const [availableQuantity, setAvailableQuantity] = useState<number>(0);
@@ -50,7 +35,7 @@ export default function SelectedSizes({ selectedColor, variant = [], handleSizeS
         setSelectedSizeId(selectedSizeId);
         handleSizeSelect(selectedSizeId);
 
-        const size = sizes.find((size: Size) => size.id.toString() === selectedSizeId );
+        const size = sizes.find((size: SizeData) => size.id.toString() === selectedSizeId );
         setAvailableQuantity( size ? size.quantity : 0 );
         handleQuantitySelect(0);
         setQuantityValue(0)
@@ -63,7 +48,7 @@ export default function SelectedSizes({ selectedColor, variant = [], handleSizeS
     };
 
     const selectedSize = useMemo(() => {
-        const size = sizes.find((size: Size) => size.id.toString() === selectedSizeId);
+        const size = sizes.find((size: SizeData) => size.id.toString() === selectedSizeId);
         return size || null;
     }, [sizes, selectedSizeId]);
 
@@ -78,7 +63,7 @@ export default function SelectedSizes({ selectedColor, variant = [], handleSizeS
                 <div className="w-[300px]">
                 <label className="flex border-black border p-4 bg-white items-center text-md rounded"> Selecione o tamanho:
                     <select onChange={handleChange} value={selectedSizeId} className="ml-auto border-black border text-center w-[50px]">
-                        {sizes.map((size: Size) => (
+                        {sizes.map((size: SizeData) => (
                             <option key={size.id} value={size.id}>
                                 {size.size}
                             </option>
