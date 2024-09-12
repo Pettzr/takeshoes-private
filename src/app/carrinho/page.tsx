@@ -31,13 +31,11 @@ export default function Page() {
   }, [data])
 
   
-  if ( session.status === 'authenticated') {
-    if (isPending) return <HomeProductsSkeleton/>;    
-    if (error) return 'An error has ocurred' + error.message;
-    if (!data) return <HomeProductsSkeleton/>;
-  } else {
-    if (isPending) return <CartSkeletonLogout/>; 
-  }
+
+  if (isPending) return <CartSkeletonLogout/>;    
+  if (error) return 'An error has ocurred' + error.message;
+  if (!data) return <CartSkeletonLogout/>;
+  
 
   const handleDelete = async (itemId: any) => {
     const confirmDelete = window.confirm('Tem certeza que deseja retirar este item do carrinho?')

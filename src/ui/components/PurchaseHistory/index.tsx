@@ -51,7 +51,7 @@ export default function PurchaseHistory() {
     }
   }, [data]);
 
-  console.log(products.length)
+  console.log(products)
 
   if (isPending) return <PurchaseHistorySkeleton/>;
   if (error) return "An error has occurred: " + error.message;

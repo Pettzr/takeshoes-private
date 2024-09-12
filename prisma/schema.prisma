@@ -67,6 +67,7 @@ model Cart {
   size       Size            @relation(fields: [sizeId], references: [id], onDelete: Cascade)
   sizeId     Int
   quantity   Int             @default(1)
+  createdAt  DateTime        @default(now())
 
   @@unique([userId, productId ,variantId ,sizeId])
 }
@@ -93,6 +94,7 @@ model Purchase {
   size                Size            @relation(fields: [sizeId], references: [id])
   sizeId              Int
   quantity            Int             @default(1)
+  createdAt           DateTime        @default(now())
 
 }
 

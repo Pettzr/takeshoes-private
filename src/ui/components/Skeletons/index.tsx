@@ -76,12 +76,10 @@ export function HomeProductsSkeleton () {
 
 export function CartSkeletonLogout () {
     return (
-        <div className="w-screen min-h-screen flex justify-center items-center skeleton">
-        <TiShoppingCart className="text-[200px]" />
-        <div className="flex flex-col gap-[20px]">
-          <h1 className="bg-black rounded p-2 text-center text-white h-[30px] w-[200px] mt-[48px] "></h1>
-          <h1 className="bg-black rounded p-2 text-center text-white h-[30px] w-[200px] "></h1>
-        </div>
+        <div className="w-full flex flex-col items-center justify-center">
+            <div className="flex flex-col skeleton items-center justify-center">
+                <TiShoppingCart className=' text-center' size={250} />
+            </div>
       </div>
     )
 }
@@ -118,8 +116,7 @@ export function PurchaseHistorySkeleton () {
     return(
     <div className="flex flex-col items-center justify-center">
         <div className="flex flex-col skeleton items-center justify-center">
-            <TbShoppingBag className=' text-center' size={300}/>
-        
+            <TbShoppingBag className=' text-center' size={250}/>
         </div>
     </div>
     )

@@ -45,6 +45,9 @@ export default async function handler (req: NextApiRequest, res: NextApiResponse
                     quantity: true,  
                 }
             }
+        },
+        orderBy: {
+            createdAt: 'desc'
         }
     })
 

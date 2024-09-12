@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth";
-import { useSession } from "next-auth/react";
 import { authOptions } from "../auth/[...nextauth]";
 import prisma from "@/src/lib/prisma";
 
@@ -59,6 +58,9 @@ export default async function handler (req: NextApiRequest, res: NextApiResponse
                     quantity: true,  
                 }
             }
+        },
+        orderBy:{
+            createdAt: 'desc'
         }
     });
   
