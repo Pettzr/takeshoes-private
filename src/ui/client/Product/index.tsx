@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 export default function Product({ data }: any) {
     const [selectedVariant, setSelectedVariant] = useState<string>("");
     const [selectedSize, setSelectedSize] = useState<string>("");
-    const [selectedQuantity, setSelectedQuantity] = useState<number>(0);
+    const [selectedQuantity, setSelectedQuantity] = useState<number>(1);
     const queryClient = useQueryClient();
     const session = useSession()
 
@@ -36,7 +36,7 @@ export default function Product({ data }: any) {
 
     const handleAddToCart = async () => {
 
-        if(selectedSize && selectedQuantity !== 0 && session.status === 'authenticated') {
+        if(selectedSize && selectedQuantity > 0 && session.status === 'authenticated') {
             try {
                 toast.loading('Processando...')
                 const response = await fetch('/api/user/add-to-cart',{
@@ -63,7 +63,7 @@ export default function Product({ data }: any) {
                 toast.error('Erro ao inserir produto no carrinho.')
             }
         } else {
-            selectedQuantity === 0 ? toast.error('Insira a quantidade desejada do produto') : session.status === 'authenticated' ? toast.error('Escolha um tamanho') : toast.error('Faça login')
+            selectedQuantity === 0 ? toast.error('Produto não disponível em estoque.') : session.status === 'authenticated' ? toast.error('Escolha um tamanho') : toast.error('Faça login')
         }
     }
 
@@ -78,7 +78,7 @@ export default function Product({ data }: any) {
                     selectedVariant={selectedVariant}
                 />
             </div>
-            <SelectedColor selectedColor={selectedVariant} variant={data.variant} />
+            <SelectedColor selectedColor={selectedVariant} variants={data.variant} />
             <SelectedSizes selectedColor={selectedVariant} variant={data.variant} handleSizeSelect={handleSizeSelect} handleQuantitySelect={handleQuantitySelect} />
             <div className="flex w-full items-center mt-[50px] justify-center">
                 <button onClick={handleAddToCart} className="h-[60px] w-[400px] bg-black text-white rounded-full ">

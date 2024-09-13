@@ -34,7 +34,7 @@ interface DataVariant {
 
   interface ImageVariantProps {
     variants: Variant[];
-    variant: Variant;
+    variant?: Variant;
     selectedColor: string; 
   }
   

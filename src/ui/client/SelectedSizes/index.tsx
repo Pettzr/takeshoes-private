@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 export default function SelectedSizes({ selectedColor, variant = [], handleSizeSelect, handleQuantitySelect }: SelectedSizesProps) {
     const [selectedSizeId, setSelectedSizeId] = useState<string>("");
     const [availableQuantity, setAvailableQuantity] = useState<number>(0);
-    const [quantityValue, setQuantityValue] = useState<number>(0);
+    const [quantityValue, setQuantityValue] = useState<number>(1);
 
     const sizes = useMemo(() => {
         if (!Array.isArray(variant)) return [];
@@ -37,8 +37,13 @@ export default function SelectedSizes({ selectedColor, variant = [], handleSizeS
 
         const size = sizes.find((size: SizeData) => size.id.toString() === selectedSizeId );
         setAvailableQuantity( size ? size.quantity : 0 );
-        handleQuantitySelect(0);
-        setQuantityValue(0)
+        if (size.quantity > 0) {
+            handleQuantitySelect(1);
+            setQuantityValue(1)
+        } else {
+            handleQuantitySelect(0);
+            setQuantityValue(0)
+        }
     };
 
     const handleQuantityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -74,10 +79,10 @@ export default function SelectedSizes({ selectedColor, variant = [], handleSizeS
                 <div className="w-[300px]">
                         <label className="flex border-black border p-4 bg-white items-center text-md rounded">Quantidade:
                         <select onChange={handleQuantityChange} value={quantityValue} className="ml-auto border-black border text-center w-[50px]">
-                            <option value={0}>{0}</option>
                             {[...Array(availableQuantity)].map((_, index) => (
-                                <option key={index + 1} value={index + 1}>
-                                    {index + 1}
+                                index === 0 ? null :
+                                <option key={index} value={index}>
+                                    {index}
                                 </option>
                             ))}
                         </select>
@@ -88,7 +93,7 @@ export default function SelectedSizes({ selectedColor, variant = [], handleSizeS
                 </div>
                 <div className="flex w-[300px]  border-black border p-4 bg-white items-center text-md rounded">
                 {selectedPrice !== null ? (
-                    <h1 className="text-3xl text-center w-full font-bold">R$ {selectedPrice * quantityValue}</h1>
+                    <h1 className="text-3xl text-center w-full font-bold">R$ {(selectedPrice * quantityValue).toFixed(2).replace(".", ",")}</h1>
                 ) : (
                     <h1 className="">Selecione um tamanho para ver o preço</h1>
                 )}
