@@ -1,6 +1,5 @@
-import checkPassword from "@/src/utils/checkPassword"
+import checkPassword from "@/src/utils/userCheckPassword"
 import { useEffect } from "react"
-
 
 export default function PasswordValidation (formdata: any) {
     const passwordValidated = checkPassword(formdata.formdata.password)

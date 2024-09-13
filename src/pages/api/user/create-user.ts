@@ -4,7 +4,7 @@ import {addMinutes} from 'date-fns';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '@/src/lib/prisma'; 
 import { hashContent } from '@/src/utils/userHash';
-import checkPassword from '@/src/utils/checkPassword';
+import checkPassword from '@/src/utils/userCheckPassword';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {

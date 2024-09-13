@@ -1,15 +1,15 @@
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './globals.css';
-import { ReactQueryProvider } from "../utils/ReactQueryProvider";
+import { ReactQueryProvider } from "../utils/ProviderReactQuery";
 import Header from '../ui/components/Header';
 import NavBar from '../ui/components/NavBar';
-import { SessionClientProvider } from '../utils/SessionProvider';
+import { SessionClientProvider } from '../utils/ProviderSession';
 import Footer from '../ui/components/Footer';
 import { ProductProvider } from '../context/ProductContext';
 import ScrollToTop from '../utils/scrollToTop';
 import CartIcon from '../ui/components/CartIcon';
-import { ToastifyProvider } from '../utils/ToastifyProvider';
+import { ToastifyProvider } from '../utils/ProviderToastify';
 import 'react-toastify/dist/ReactToastify.css'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '@/src/lib/prisma'; 
-import verifyEmail from '@/src/utils/verifyEmail';
+import verifyEmail from '@/src/utils/userVerifyEmail';
 
 export default async function handler (req: NextApiRequest, res: NextApiResponse) {
     const { token, email } = req.query;

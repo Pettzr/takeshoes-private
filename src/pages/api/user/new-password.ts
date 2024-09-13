@@ -1,5 +1,5 @@
 import prisma from "@/src/lib/prisma";
-import checkPassword from "@/src/utils/checkPassword";
+import checkPassword from "@/src/utils/userCheckPassword";
 import { hashContent } from "@/src/utils/userHash";
 import { NextApiRequest, NextApiResponse } from "next";
 
