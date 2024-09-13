@@ -14,7 +14,7 @@ export default function SelectVariant({ variants = [], handleSelect, showCreateO
         <select 
           onChange={handleChange} 
           value={selectedVariant} 
-          className="p-2 w-[200px] text-center border border-black"
+          className="p-2 w-[200px] text-center border border-black rounded-full"
         >
           {showCreateOption && <option value="create">Criar</option>}
           {variants.map((variant: any) => (

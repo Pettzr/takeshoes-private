@@ -4,6 +4,7 @@ import Product from "@/src/ui/client/Product";
 import { ProductSkeleton } from "@/src/ui/components/Skeletons";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
+import NotFound from "../../not-found";
 
 
 export default function Page({ params }: { params: { slug: string} }) {
@@ -19,13 +20,13 @@ export default function Page({ params }: { params: { slug: string} }) {
     }
     if (isPending) return <ProductSkeleton/>;
     if (error) return <div>Error fetching product data.</div>;
-    if (!data) return <div>No product found for slug {slug}</div>;
+    if (!data || !data.variant) return <NotFound/>;
 
-    return(
-        <div className="flex w-full flex-col items-center min-h-screen mb-[50px]">
-                <div className="flex w-full justify-center">
-                    <Product data={data} />
-                </div>
-        </div>
-    )
+    return (
+            <div className="flex w-full flex-col items-center min-h-screen mb-[50px]">
+                    <div className="flex w-full justify-center">
+                        <Product data={data} />
+                    </div>
+            </div>
+    )   
 }

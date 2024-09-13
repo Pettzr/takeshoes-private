@@ -13,20 +13,7 @@ interface productProps {
   pagination: boolean,
 }
 
-export default function Products({ pagination, products, onPageChange, totalProducts, itemsPerPage, currentPage, deleteItem, changeQuantity }: productProps) {
-  const totalPages = Math.ceil(totalProducts / itemsPerPage);
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      onPageChange(currentPage + 1);
-    }
-  };
-
-  const handlePreviousPage = () => {
-    if (currentPage > 1) {
-        onPageChange(currentPage - 1);
-    };
-  }
+export default function Products({ pagination, products, totalProducts, itemsPerPage, deleteItem, changeQuantity }: productProps) {
 
   const quantityOptions = (maxQuantity: number) => {
     return Array.from({ length: maxQuantity }, (_, i) => i + 1);
@@ -36,17 +23,6 @@ export default function Products({ pagination, products, onPageChange, totalProd
     <div className='w-full'>
       {products.length > 0 ? (
         <>
-          {pagination && <div className="flex mb-[30px] h-[30px] justify-center text-lg ">
-              <button onClick={handlePreviousPage} disabled={currentPage === 1} className="flex w-auto p-4 text-white items-center bg-gray-800  rounded-l">
-              Voltar
-              </button>
-              <span className="flex items-center p-4 text-white bg-gray-800 ">
-                {currentPage} de {totalPages}
-              </span>
-              <button onClick={handleNextPage} disabled={currentPage === totalPages} className="flex w-auto p-4 text-white items-center bg-gray-800 rounded-r">
-              Próximo
-              </button>
-          </div>}
           <div 
             className="flex gap-10/100 gap-y-[200px] w-76/100 mx-12/100 justify-start p-8 flex-wrap "
           >
@@ -99,17 +75,6 @@ export default function Products({ pagination, products, onPageChange, totalProd
             })}
           </div>
           {pagination && <div className='flex w-full justify-center mt-[100px]'>
-            <div className="flex mt-[30px] text-lg h-[30px] ">
-              <button onClick={handlePreviousPage} disabled={currentPage === 1} className="flex w-auto p-4 text-white items-center bg-gray-800  rounded-l">
-              Voltar
-              </button>
-              <span className="flex items-center p-4 text-white bg-gray-800 ">
-                {currentPage} de {totalPages}
-              </span>
-              <button onClick={handleNextPage} disabled={currentPage === totalPages} className="flex items-center w-auto p-4 text-white bg-gray-800  rounded-r">
-              Próximo
-              </button>
-            </div>
           </div>}
         </>
       ) : (

@@ -66,8 +66,8 @@ export default function SelectedSizes({ selectedColor, variant = [], handleSizeS
     return (
         <div className="flex flex-col mt-[100px] w-full items-center">
                 <div className="w-[300px]">
-                <label className="flex border-black border p-4 bg-white items-center text-md rounded"> Selecione o tamanho:
-                    <select onChange={handleChange} value={selectedSizeId} className="ml-auto border-black border text-center w-[50px]">
+                <label className="flex border-black border p-4 bg-white items-center text-md rounded-full"> Selecione o tamanho:
+                    <select onChange={handleChange} value={selectedSizeId} className="ml-auto border-black border text-center w-[50px] rounded-full">
                         {sizes.map((size: SizeData) => (
                             <option key={size.id} value={size.id}>
                                 {size.size}
@@ -77,8 +77,8 @@ export default function SelectedSizes({ selectedColor, variant = [], handleSizeS
                 </label>
                 </div>
                 <div className="w-[300px]">
-                        <label className="flex border-black border p-4 bg-white items-center text-md rounded">Quantidade:
-                        <select onChange={handleQuantityChange} value={quantityValue} className="ml-auto border-black border text-center w-[50px]">
+                        <label className="flex border-black border p-4 bg-white items-center text-md rounded-full mt-[10px]">Quantidade:
+                        <select onChange={handleQuantityChange} value={quantityValue} className="ml-auto border-black border text-center w-[50px] rounded-full">
                             {[...Array(availableQuantity)].map((_, index) => (
                                 index === 0 ? null :
                                 <option key={index} value={index}>
@@ -88,10 +88,10 @@ export default function SelectedSizes({ selectedColor, variant = [], handleSizeS
                         </select>
                         </label>
                     {availableQuantity === 0 && selectedSize && (
-                        <h2>Estoque indisponível</h2>
+                        <h2 className="text-center w-full text-xl font-bold">Estoque indisponível</h2>
                     )}
                 </div>
-                <div className="flex w-[300px]  border-black border p-4 bg-white items-center text-md rounded">
+                <div className="flex w-[300px]   p-4 bg-white items-center text-md rounded">
                 {selectedPrice !== null ? (
                     <h1 className="text-3xl text-center w-full font-bold">R$ {(selectedPrice * quantityValue).toFixed(2).replace(".", ",")}</h1>
                 ) : (
