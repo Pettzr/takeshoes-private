@@ -1,6 +1,6 @@
 'use client'
 
-import { TiShoppingCart } from 'react-icons/ti';
+import { RiShoppingCartLine } from 'react-icons/ri';
 import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
@@ -29,9 +29,9 @@ export default function CartIcon () {
 
     return(
         <Link href={'/carrinho'}>
-            <TiShoppingCart className='fixed left-0 z-50' size={60} color='black'/>
-            <div className='fixed left-12 top-36 bg-red-700 w-6 h-6 rounded-full 
-            items-center flex justify-center text-white text-lg p-4 z-50'>
+            <RiShoppingCartLine className='fixed left-0 z-50' size={40} color='black'/>
+            <div className='fixed left-8 top-36 bg-red-700 w-6 h-6 rounded-full 
+            items-center flex justify-center text-white text-md p-3 z-50'>
                 {products}
             </div>
         </Link>

@@ -13,15 +13,12 @@ import { HiPencil } from "react-icons/hi";
 
 
 export default function NavBar() {
-    let links = ["/entrar"]
-    let pages = ['Início']
+    let options = ['Produtos']
 
     return (
-        <div className="flex bg-black w-full items-center text-white">
-            {links.map((link, index) => (
-                <Link href={link}>
-                    <h1>{pages[index]}</h1>
-                </Link>
+        <div className="flex my-[10px] bg-black w-full items-center text-white">
+            {options.map((option, index) => (
+                <h1 className="w-full mx-1/10">{option}</h1>
             ))}
         </div>
     )

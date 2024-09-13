@@ -4,19 +4,19 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    if (req.method === 'POST') {
+    if (req.method === 'GET') {
         try {
-            const { name } = req.body;
+            const { q } = req.query;
 
             // Tratar espaços vazios e valores não fornecidos
-            const searchName = typeof name === 'string' ? name.trim() : '';
+            const search = typeof q === 'string' ? q.trim() : '';
 
             // Consultar produtos
             const products = await prisma.product.findMany({
                 where: {
-                    name: searchName
+                    name: search
                         ? {
-                            contains: searchName,
+                            contains: search,
                             mode: 'insensitive',
                         }
                         : undefined,
