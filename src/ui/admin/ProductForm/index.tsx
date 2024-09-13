@@ -5,28 +5,15 @@ import { toast } from "react-toastify";
 
 interface ProductFormProps {
   onSubmit: (data: any) => void;
-  initialProductName?: string;
-  initialProductColor?: string;
-  initialProductPrice?: number;
-  initialImages?: string[];
-  initialSizes?: { [key: string ]: SizeState };
   showProductName?: boolean;
 }
 
-export default function ProductForm({
-  onSubmit,
-  initialProductName = '',
-  initialProductColor = '',
-  initialProductPrice = 0,
-  initialImages = [],
-  initialSizes = {},
-  showProductName = true,
-}: ProductFormProps) {
-  const [productName, setProductName] = useState(initialProductName);
-  const [productColor, setProductColor] = useState(initialProductColor);
-  const [productPrice, setProductPrice] = useState(initialProductPrice);
-  const [images, setImages] = useState(initialImages);
-  const [sizes, setSizes] = useState(initialSizes);
+export default function ProductForm({ onSubmit, showProductName = true, }: ProductFormProps) {
+  const [productName, setProductName] = useState<string>('');
+  const [productColor, setProductColor] = useState<string>('');
+  const [productPrice, setProductPrice] = useState<number>(0);
+  const [images, setImages] = useState<string[]>(['']);
+  const [sizes, setSizes] = useState<{[key: string]: SizeState}>({});
 
   const handleSizeChange = (size: string, field: keyof SizeState, value: number) => {
     setSizes((prevSizes) => ({
@@ -59,9 +46,9 @@ export default function ProductForm({
         return false;
       }
     }
-  
     return true;
   };
+  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) {
@@ -78,7 +65,6 @@ export default function ProductForm({
         quantity: data.quantity,
       })),
     };
-
     onSubmit(productData);
   };
 

@@ -6,7 +6,6 @@ import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import NotFound from "../../not-found";
 
-
 export default function Page({ params }: { params: { slug: string} }) {
     const { slug } = params;
     const router = useRouter()

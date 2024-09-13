@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -6,7 +6,6 @@ interface cartProductProps {
   products?: any,
   deleteItem: any,
   changeQuantity: any,
-
 }
 
 export default function CartProducts({ products, deleteItem, changeQuantity }: cartProductProps) {

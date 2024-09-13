@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, ReactNode, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 interface ProductContextType {
@@ -11,13 +11,9 @@ interface ProductContextType {
   invalidateProductQueries: () => void;
 }
 
-interface ProductProviderProps {
-  children: ReactNode;
-}
-
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
 
-export function ProductProvider({ children }: ProductProviderProps ) {
+export function ProductProvider({ children }: { children: React.ReactNode } ) {
   const [slug, setSlug] = useState<string | null>(null);
   const queryClient = useQueryClient()
 
@@ -38,7 +34,6 @@ export function ProductProvider({ children }: ProductProviderProps ) {
       queryClient.invalidateQueries({queryKey: ['productBySlug', slug]});
     }
   };
-
 
   const fetchProductBySlug = (newSlug: string) => {
     setSlug(newSlug);

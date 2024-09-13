@@ -9,8 +9,7 @@ interface SizeData {
     size: string;
     quantity: number;
     price: number;
-  }
-  
+}
 
 interface SizeInputProps {
     sizes: {

@@ -1,6 +1,5 @@
 'use client';
 
-import { NextPage } from 'next';
 import SlickCarousel from '@/src/ui/client/SlickCarousel';
 import { useEffect, useState } from 'react';
 
