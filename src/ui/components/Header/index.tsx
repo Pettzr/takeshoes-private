@@ -4,23 +4,26 @@ import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { FiUser } from "react-icons/fi";
-import { RiShoppingCartLine } from "react-icons/ri";
-
+import { FiUser, FiUserPlus } from "react-icons/fi";
 import { IoSearch } from "react-icons/io5";
+import { signOut, useSession } from "next-auth/react";
+import { useQueryClient } from "@tanstack/react-query";
+import { RiLoginBoxLine, RiShoppingCartLine, RiShieldUserLine, RiLogoutBoxLine } from "react-icons/ri";
+import { IoBagHandleOutline } from "react-icons/io5";
+
+
 
 export default function Header() {
     const [search, setSearch ] = useState('')
+    const session = useSession();
+    const queryClient = useQueryClient();
     const router = useRouter()
     const [showUserDropdown, setShowUserDropdown] = useState(false);
 
     const handleMouseEnter = () => {
     setShowUserDropdown(true)
-    console.log('oi')
     }
     const handleMouseLeave = () => setShowUserDropdown(false);
-  
-
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(event.target.value)
@@ -33,7 +36,16 @@ export default function Header() {
             router.push(`/search?q=${encodeURIComponent(search)}`)
         }
     }
-    
+
+    const handleLogout = async () => {
+        await signOut({redirect: false});
+        queryClient.invalidateQueries({ queryKey: ['cart-icon'] });
+        router.push('/');
+    }
+
+    const links = session.data?.user.role === 'admin' ? ['/historico', '/carrinho', '/admin'] : session.status === 'authenticated' ? ['/historico-pedidos', 'carrinho'] :  ['/entrar', '/cadastrar'];
+    const pages = session.data?.user.role === 'admin' ? ['Histórico de Pedidos', 'Carrinho', 'Admin'] : session.status === 'authenticated' ? ['Histórico de Pedidos', 'Carrinho'] : ['Fazer Login', 'Cadastrar'];
+    const icons = session.data?.user.role === 'admin' ? [<IoBagHandleOutline/> , <RiShoppingCartLine/> , <RiShieldUserLine/>] : session.status === 'authenticated' ? [<IoBagHandleOutline/>, <RiShoppingCartLine/> ] : [<RiLoginBoxLine/>, <FiUserPlus/>];
 
     return (
         <div className="flex flex-col bg-black h-auto px-[100px] ">
@@ -53,19 +65,22 @@ export default function Header() {
                             <FiUser size={25}/>
                             <h1>Sua Conta</h1>
                         </Link>
-                        {showUserDropdown && (
-                        <div className="dropdown-menu absolute top-8 right-0     bg-white shadow-md rounded-md px-2 py-1">
-                            <Link href="/historico-pedidos" className="dropdown-item block py-1 px-2 hover:bg-gray-200 rounded-md">
-                            Histórico de Pedidos
-                            </Link>
-                            <Link href="/carrinho" className="dropdown-item block py-1 px-2 hover:bg-gray-200 rounded-md">
-                            Carrinho
-                            </Link>
-                            <Link href="/deslogar" className="dropdown-item block py-1 px-2 hover:bg-gray-200 rounded-md">
-                            Deslogar
-                            </Link>
+                        {showUserDropdown &&
+                        <div className="w-full flex flex-col dropdown-menu absolute top-8 left-0 bg-white shadow-2xl rounded-md p-1 gap-2 mt-[2px]">
+                            {pages.map( (page, index) => (
+                                <Link href={links[index]} className="flex items-center gap-3 hover:bg-black/10 p-2 rounded-md whitespace-nowrap">
+                                    <h1 className="text-xl">{icons[index]}</h1>
+                                    <h1>{page}</h1>
+                                </Link>
+                            ))}
+                            {session.status === 'authenticated' && (
+                                <button onClick={handleLogout} className="flex items-center gap-3 hover:bg-black/10 p-2 rounded-md whitespace-nowrap">
+                                    <h1 className="text-xl"><RiLogoutBoxLine/></h1>
+                                    Deslogar
+                                </button>
+                            )}
                         </div>
-                        )}
+                        }
                     </div>
                 </div>
             </div>
