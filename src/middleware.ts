@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { adminAuthMiddleware } from "./middleware/adminAuthMiddleware";
+import { adminAuthMiddleware } from "./middleware/adminAuth";
 
 export function middleware(req: NextRequest) {
     return adminAuthMiddleware(req);

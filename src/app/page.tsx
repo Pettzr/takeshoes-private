@@ -1,14 +1,14 @@
 "use client"
-import React, { useRef } from 'react';
+import React from 'react';
 import MarketingCarousel from '@/src/ui/client/MarketingCarousel';
 import News from '@/src/ui/client/News';
 import Products from '../ui/components/Products';
 import { HomeSkeleton } from '../ui/components/Skeletons';
 import { useQuery } from '@tanstack/react-query';
+import tenis from '../../public/images/tenis.jpg'
+import Image from 'next/image';
 
 export default function Page() {
-  const productRef = useRef<HTMLDivElement>(null)
-
   const { isPending, error, data } = useQuery({
       queryKey: ['products'],
       queryFn: () =>
@@ -24,10 +24,12 @@ export default function Page() {
 
   return (  
       <div className="flex flex-col w-full mb-[100px] min-h-screen" >
-          <h1 className="text-center text-black text-5xl font-bold my-[100px]">Olá, seja bem-vindo a nossa loja!</h1>
+          <h1 className="text-center text-black text-5xl font-bold my-[100px]">O hype está com você!</h1>
           <MarketingCarousel />
           <News />
-          <h1 className="text-center text-black text-3xl font-bold my-[100px]">Produtos</h1>
+          <div className='w-full flex justify-center my-[100px]'>
+            <Image src={tenis} width={2000} height={200} alt={'Tênis'} className='w-3/4 h-[800px]' />
+          </div>
           <Products pagination={true} products={maxData}/>
       </div>
   );

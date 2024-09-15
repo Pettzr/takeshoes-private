@@ -10,11 +10,9 @@ interface SlickCarouselProps {
 
 export default function SlickCarousel({ images, settings }: SlickCarouselProps) {
   return (
-    <Slider {...settings}>
+    <Slider {...settings} className='w-full'>
       {images.map((image, index) => (
-        <div key={index} className='relative min-h-[600px] overflow-x-hidden' >
-          <Image src={image} alt={`Slide ${index}`} layout='fill' objectFit='fill' className='min-w-full ' />
-        </div>
+          <Image key={image} src={image} alt={`Slide ${index}`} width={2000} objectFit='cover' height={500} className='h-[800px]'/>
       ))}
     </Slider>
   );

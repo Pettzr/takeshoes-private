@@ -7,7 +7,9 @@ export default function Footer() {
             <div className="flex border-white/20 border-2 w-full p-4 px-32">
                 <div className="text-white">
                     <h1 className="text-xl">Produtos</h1>
-                    <h2 className="text-md mt-[5px] ml-[5px]">Camisas</h2>
+                    <Link href={'/camisas'}>
+                        <h2 className="text-md mt-[5px] ml-[5px]">Camisas</h2>
+                    </Link>
                 </div>
                 <h1 className="flex items-center w-full justify-center text-center h-full text-white text-sm">
                 © 2024 Henrique Crivelaro & Peterson Gonçalves <br/>

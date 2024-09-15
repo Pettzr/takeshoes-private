@@ -25,6 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <ToastifyProvider/>
                 <ScrollToTop />
                 <Header />
+                <NavBar />
                 <CartIcon />
                 <main className='flex min-h-screen w-screen' >
                 {children}

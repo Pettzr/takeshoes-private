@@ -46,7 +46,7 @@ export default function News() {
                 <div className='flex overflow-x-auto gap-8 border-black w-75/100 justify-around overflow-y-hidden h-[500px]'>
                     {images.map((item, index) => (
                         <div key={index} className='flex flex-col '>
-                            <Link href={`/products/${item.slug}`} className='flex p-4 flex-col bg-[#EAEEEF] space-around gap-4 min-h-[500px]'>
+                            <Link href={`/camisas/${item.slug}`} className='flex p-4 flex-col  space-around gap-4 min-h-[500px]'>
                                 <h2 className='text-black text-center text-xl font-bold '>{item.name}</h2>
                                 <Image
                                  src={item.image[0]} 
@@ -54,7 +54,7 @@ export default function News() {
                                  objectFit='cr' 
                                  width={1080}
                                  height={0}
-                                 className="w-[300px] max-h-[250px] min-h-[250px] my-[50px]"
+                                 className="w-[300px] p-4 max-h-[400px] min-h-[400px] bg-[#EAEEEF]"
                                  />
                                  <h2 className='my-[5px] text-2xl font-bold text-center'>R${item.price.toFixed(2).replace('.', ',')}</h2>
                             </Link>

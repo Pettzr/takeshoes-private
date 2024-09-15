@@ -30,7 +30,7 @@ export default function CartIcon () {
     return(
         <Link href={'/carrinho'}>
             <RiShoppingCartLine className='fixed left-0 z-50' size={40} color='black'/>
-            <div className='fixed left-8 top-36 bg-red-700 w-6 h-6 rounded-full 
+            <div className='fixed left-8 top-40 bg-red-700 w-6 h-6 rounded-full 
             items-center flex justify-center text-white text-md p-3 z-50'>
                 {products}
             </div>

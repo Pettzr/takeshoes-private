@@ -33,7 +33,7 @@ export default function Products({ pagination, products, totalProducts, itemsPer
                   key={product.product ? product.product.name : product.name}
                   className="flex flex-col items-center basis-76/100 max-w-26.6/100 border-black p-4" 
                 >
-                  <Link href={`/products/${product.product ? product.product.slug : product.slug}`} className='h-auto p-4 min-w-[400px] max-w-[400px] bg-[#EAEEEF]'>
+                  <Link href={`/camisas/${product.product ? product.product.slug : product.slug}`} className='h-auto p-4 min-w-[400px] max-w-[400px] '>
                     <h1 className="w-full text-black text-center text-2xl font-bold mb-[20px]">{product.name}</h1>
                     <Image
                       src={
@@ -44,7 +44,7 @@ export default function Products({ pagination, products, totalProducts, itemsPer
                       alt="Frente Da Camisa"
                       width={500}
                       height={0}
-                      className="w-full p-4 h-[400px]"
+                      className="w-full p-4 h-[400px] bg-[#EAEEEF]"
                     />
                     {!changeQuantity ? <h1 className="w-full text-black text-center text-2xl font-bold mt-[20px]">R${product.variant[0].price.toFixed(2).replace('.', ',')}</h1>
                     : null}

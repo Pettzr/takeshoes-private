@@ -1,24 +1,19 @@
 "use client";
-
-import clsx from "clsx";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useSession } from "next-auth/react"
-import { IoMdHome } from "react-icons/io";
-import { TiShoppingCart } from "react-icons/ti";
-import { FaUser } from "react-icons/fa";
-import { MdAdminPanelSettings } from "react-icons/md";
-import { LuDoorOpen } from "react-icons/lu";
-import { HiPencil } from "react-icons/hi";
-
+import { FaArrowRight } from "react-icons/fa";
 
 export default function NavBar() {
-    let options = ['Produtos']
+    let options = ['Clique aqui para ver nossos produtos!']
 
     return (
-        <div className="flex my-[10px] bg-black w-full items-center text-white">
+        <div className="flex w-screen border-b-2 justify-center">
             {options.map((option, index) => (
-                <h1 className="w-full mx-1/10">{option}</h1>
+                <Link href={'/camisas'} key={option}>
+                    <div  className="flex p-2 gap-[10px] items-center border-gray-400 cursor-pointer text-xl hover:bg-gray-300">
+                        <FaArrowRight />
+                        <h1 className="text-center" >{option}</h1>
+                    </div>
+                </Link>
             ))}
         </div>
     )

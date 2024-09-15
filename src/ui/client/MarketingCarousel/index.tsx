@@ -41,9 +41,9 @@ export default function MarketingCarousel() {
   };
 
   return (
-    <div className='flex w-screen justify-center'>
+    <div className='flex w-full justify-center'>
       <div className='flex flex-col w-3/4'>
-        <SlickCarousel images={images} settings={marketingCarouselSettings}/>
+          <SlickCarousel images={images} settings={marketingCarouselSettings}/>
       </div>
     </div>
   );

@@ -5,6 +5,8 @@ import { useSearchParams } from "next/navigation"
 import NotFound from "../not-found";
 import Products from "../../ui/components/Products";
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { FaArrowLeft } from "react-icons/fa";
 
 
 export default function Page () {
@@ -30,6 +32,13 @@ export default function Page () {
     if (!data || data.length === 0) return <NotFound/>;
 
     return(
-        <Products pagination={true} products={products}/>
+        <div className="w-full mt-[100px]">
+            <Link href={'/'} className="flex items-center gap-[10px] ml-1/10">
+                <FaArrowLeft />
+                <h1 className="text-2xl">Voltar</h1>
+            </Link>
+            <h1 className="text-black w-full text-center text-2xl font-bold my-[40px]">O estilo que você procura!</h1>
+            <Products pagination={true} products={products}/>
+        </div>
     )
 }
