@@ -36,7 +36,7 @@ export default function Header() {
     
 
     return (
-        <div className="flex flex-col bg-black h-auto px-[100px] ">
+        <div className="flex flex-col bg-black h-auto px-[100px] mb-[30px]">
             <div className="flex justify-between items-center">
                 <div className="w-1/3">
                     <Link href={'/'}>

@@ -7,6 +7,7 @@ import { HomeSkeleton } from '../ui/components/Skeletons';
 import { useQuery } from '@tanstack/react-query';
 import tenis from '../../public/images/tenis.jpg'
 import Image from 'next/image';
+import NavBar from '../ui/components/NavBar';
 
 export default function Page() {
   const { isPending, error, data } = useQuery({
@@ -30,6 +31,7 @@ export default function Page() {
           <div className='w-full flex justify-center my-[100px]'>
             <Image src={tenis} width={2000} height={200} alt={'Tênis'} className='w-3/4 h-[800px]' />
           </div>
+          <NavBar />
           <Products pagination={true} products={maxData}/>
       </div>
   );

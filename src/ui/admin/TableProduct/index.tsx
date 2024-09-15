@@ -2,21 +2,8 @@ import { useQueryClient } from "@tanstack/react-query";
 import Link from "next/link";
 import { FaTrash } from "react-icons/fa";
 
-export default function TableAdmin({ data, onPageChange, totalProducts, itemsPerPage, currentPage  }: any) {
-    const totalPages = Math.ceil(totalProducts / itemsPerPage)
+export default function TableAdmin({ data }: any) {
     const queryClient = useQueryClient()
-
-    const handleNextPage = () => {
-      if (currentPage < totalPages){
-        onPageChange(currentPage + 1)
-      }
-    }
-  
-    const handlePreviousPage = () => {
-      if (currentPage > 1) {
-        onPageChange(currentPage - 1)
-      }
-    }
 
     const handleDeleteProduct = async(id: number) => {
         fetch(`/api/products/delete-product`, {
@@ -30,7 +17,7 @@ export default function TableAdmin({ data, onPageChange, totalProducts, itemsPer
     }
   
     return (
-    <div className="flex flex-col text-white justify-center items-center mt-[50px]">
+    <div className="flex flex-col text-white justify-center items-center">
         <div className="flex flex-col border-2 w-auto gap-2 border border-black p-12 items-center">
             {data.length > 0 && 
             data.map((product: any) => (
@@ -57,17 +44,6 @@ export default function TableAdmin({ data, onPageChange, totalProducts, itemsPer
                      </table>      
                 </div>
             ))}
-        </div>
-        <div className="flex justify-center items-center my-[50px]">
-            <button onClick={handlePreviousPage} disabled={currentPage === 1} className="px-4 py-2 text-white bg-gray-800 rounded-l">
-                Anterior
-            </button>
-            <span className="px-4 py-2 text-white bg-gray-800">
-                {currentPage} de {totalPages}
-            </span>
-            <button onClick={handleNextPage} disabled={currentPage === totalPages} className="px-4 py-2 text-white bg-gray-800 rounded-r">
-                Próximo
-            </button>
         </div>
     </div>
     )
